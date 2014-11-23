@@ -1,5 +1,10 @@
 # Dididi's Dotfiles
 
+1. Install iTerm2
+  - [iTerm2](http://iterm2.com/)
+    - [iTerm Solarized Theme](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
+    - `Preferences` -> `Profiles` -> `Terminal` -> `Terminal Emulation` -> Report Terminal Type and chosing `xterm-256color`
+
 1. Install Homebrew
   - [Homebrew](http://brew.sh/)
 
@@ -19,5 +24,5 @@
   - [Tmux](https://github.com/ThomasAdam/tmux)
 
 5. Install Dotfiles
-`homeshick clone dfdgsdfg/dotfiles`
+- `homeshick clone dfdgsdfg/dotfiles`
 
