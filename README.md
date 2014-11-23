@@ -8,19 +8,21 @@
 1. Install Homebrew
   - [Homebrew](http://brew.sh/)
 
-2. Install Fish Shell
+1. Install Fish Shell
   - [Fish Shell](http://fishshell.com/)
+    - [Oh My Fish](https://github.com/bpinto/oh-my-fish)
 
-3. Install Homeshick
+1. Install Homeshick
   - [Homeshick](https://github.com/andsens/homeshick)
 
-4. Install Packages
+1. Install Packages
   - [Git](http://git-scm.com/)
   - [Tig](https://github.com/jonas/tig)
   - [Ranger](https://github.com/hut/ranger)
   - [Weechat](http://weechat.org/)
   - [Vim](http://www.vim.org/)
     - [Vundle.vim](https://github.com/gmarik/Vundle.vim)
+    - [Power Line Font](https://github.com/Lokaltog/powerline-fonts)
   - [Tmux](https://github.com/ThomasAdam/tmux)
 
 5. Install Dotfiles
