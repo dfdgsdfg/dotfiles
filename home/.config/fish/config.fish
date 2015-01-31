@@ -31,8 +31,9 @@ set -x ANDROID_HOME "/usr/local/opt/android-sdk"
 set -x EDITOR "/usr/local/bin/vim"
 
 # Boot2docker
-# set -x DOCKER_HOST "tcp://192.168.59.103:2376"
-# set -x DOCKER_CERT_PATH "/Users/ipx/.boot2docker/certs/boot2docker-vm"
+set -x DOCKER_HOST "tcp://192.168.59.103:2376"
+set -x DOCKER_CERT_PATH "/Users/ipx/.boot2docker/certs/boot2docker-vm"
+set -x DOCKER_TLS_VERIFY 1
 
 # Docker Parallels
 # https://vagrantcloud.com/parallels/boxes/boot2docker
