@@ -7,7 +7,7 @@ set fish_theme robbyrussell
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-fish/plugins/*)
 # Custom plugins may be added to ~/.oh-my-fish/custom/plugins/
 # Example format: set fish_plugins autojump bundler
-set fish_plugins brew node tmux rebnv
+set fish_plugins brew
 
 # Path to your custom folder (default path is $FISH/custom)
 #set fish_custom $HOME/dotfiles/oh-my-fish
@@ -22,7 +22,11 @@ set fish_plugins brew node tmux rebnv
 status --is-interactive;
 . (rbenv init -|psub)
 
-# User bin
+# Virtualenv
+set -x PIP_REQUIRE_VIRTUALENV=true
+set -x PIP_DOWNLOAD_CACHE="$HOME/.pip/cache"
+
+# PATH
 set -x PATH "$HOME/bin" $PATH
 set -x PATH $PATH "/usr/local/opt/go/libexec/bin"
 set -x PATH $PATH "$HOME/go/bin"
@@ -42,4 +46,3 @@ set -x DOCKER_TLS_VERIFY 1
 
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 
-source "$HOME/.homesick/repos/homeshick/homeshick.fish"
