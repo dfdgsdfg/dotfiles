@@ -2,7 +2,7 @@
 
 1. Install iTerm2
   - [iTerm2](http://iterm2.com/)
-    - [iTerm Solarized Theme](https://github.com/altercation/solarized/tree/master/iterm2-colors-solarized)
+    - [iTerm Color Scheme](https://github.com/mbadolato/iTerm2-Color-Schemes)
     - `Preferences` -> `Profiles` -> `Terminal` -> `Terminal Emulation` -> Report Terminal Type and chosing `xterm-256color`
 
 1. Install Homebrew
