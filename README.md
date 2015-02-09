@@ -19,6 +19,7 @@
   - [Git](http://git-scm.com/)
   - [Tig](https://github.com/jonas/tig)
   - [Ranger](https://github.com/hut/ranger)
+  - [w3m](http://w3m.sourceforge.net/)
   - [Weechat](http://weechat.org/)
   - [Vim](http://www.vim.org/)
     - [Vundle.vim](https://github.com/gmarik/Vundle.vim)
