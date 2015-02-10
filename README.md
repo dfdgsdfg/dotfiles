@@ -28,5 +28,8 @@
   - [editorconfig](https://github.com/editorconfig/editorconfig-core-c)
 
 5. Install Dotfiles
-- `homeshick clone dfdgsdfg/dotfiles`
+  - `homeshick clone dfdgsdfg/dotfiles`
+
+6. Install Vim Plugins
+  - `vim +PluginInstall +qall`
 
