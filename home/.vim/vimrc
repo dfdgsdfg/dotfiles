@@ -74,24 +74,27 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+
 """""""""
 "" Config
 
-""""""""
+
+"""""""""
 "" editor
-syntax enable "문법강조를 사용
-set imd "모드를 변경하면 자동으로 키보드를 영문 레이아웃으로 변경
-set expandtab "탭대신 스페이스
-set tabstop=2 "탭 눌렀을때 2칸
-set shiftwidth=2 "자동 들여쓰기 사용시 2칸
-set softtabstop=2
-set number "행표시
-set autoindent " 자동으로 들여쓰기를 한다.
-set smartindent " 똑똑한 들여쓰기 사용
+syntax enable " 문법강조를 사용
+set number " 행표시
+set imdisable " 모드를 변경하면 자동으로 키보드를 영문 레이아웃으로 변경
+set expandtab " `tab`키를 눌렀을때 `tab`캐릭터 대신 스페이스 캐릭터 삽입
+set tabstop=2 " `tab`키를 눌렀을때 움직이는 칸수
+set shiftwidth=2 " 비주얼 모드 사용시 `<`, `>`키를 통해 좌,우로 쉬프팅되는 칸수
+set softtabstop=2 " `tab`이나 `backspace`키를 눌렀을때, 공백의 캐릭터가 `space`이여도 `tab`으로 인식하여 작동하게 되는 칸수
+set autoindent " `enter`키로 새줄을 만들었을때 직전 줄을 참고하여 자동으로 들여쓰기
+set smartindent " `if`, `else`등의 키워드가 있을시 다음 줄에서 자동으로 들여쓰기
+
 
 """""""""""""
 "" appearance
-set t_Co=256 "http:://unix.stackexchange.com/questions/154012/terminal-colors-for-vim-airline-and-tmux-tmuxline 터미널 컬러 설정
+set t_Co=256 " http:://unix.stackexchange.com/questions/154012/terminal-colors-for-vim-airline-and-tmux-tmuxline 터미널 컬러 설정
 let g:rehash256 = 1
 colorscheme molokai
 " colorscheme solarized
