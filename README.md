@@ -25,6 +25,7 @@
     - [Vundle.vim](https://github.com/gmarik/Vundle.vim)
     - [Power Line Font](https://github.com/Lokaltog/powerline-fonts)
   - [Tmux](https://github.com/ThomasAdam/tmux)
+  - [editorconfig](https://github.com/editorconfig/editorconfig-core-c)
 
 5. Install Dotfiles
 - `homeshick clone dfdgsdfg/dotfiles`
