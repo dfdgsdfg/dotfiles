@@ -185,3 +185,20 @@ nmap <silent> <C-P>  <Plug>GoldenViewPrevious
 "" EditorConfig-vim
 let g:EditorConfig_core_mode = 'external_command'
 
+
+""""""""""""
+"" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+
+"""""""""""""""
+"" fugitive.vim
+autocmd QuickFixCmdPost *grep* cwindow
+
