@@ -45,7 +45,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 "" editing
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-surround'
-Plugin 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'scrooloose/syntastic'
@@ -58,6 +58,8 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'zhaocai/GoldenView.Vim'
+Plugin 'kien/ctrlp.vim'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -88,8 +90,19 @@ set expandtab " `tab`키를 눌렀을때 `tab`캐릭터 대신 스페이스 캐�
 set tabstop=2 " `tab`키를 눌렀을때 움직이는 칸수
 set shiftwidth=2 " 비주얼 모드 사용시 `<`, `>`키를 통해 좌,우로 쉬프팅되는 칸수
 set softtabstop=2 " `tab`이나 `backspace`키를 눌렀을때, 공백의 캐릭터가 `space`이여도 `tab`으로 인식하여 작동하게 되는 칸수
-set autoindent " `enter`키로 새줄을 만들었을때 직전 줄을 참고하여 자동으로 들여쓰기
+set autoindent "  `enter`키로 새줄을 만들었을때 직전 줄을 참고하여 자동으로 들여쓰기  
+" set cindent " `vi`의 `autoindent`와 같으며 C언어 스타일로 자동으로 들여쓰기  
 set smartindent " `if`, `else`등의 키워드가 있을시 다음 줄에서 자동으로 들여쓰기
+set incsearch " 검색시 emacs처럼 `enter`키를 안눌러도 한글자만 입력해도 검색 시작
+set ignorecase " 검색시 대소문자 무시
+set smartcase " 검색시 전체가 대문자이면 대문자만 검색
+set hlsearch " 검색시 일치하는 단어를 전체 문서에서 하이라이팅
+
+nmap <leader>q :nohlsearch<CR> " 검색 하이라이팅 키고 끄기
+nmap <leader>o :set paste!<CR> " 코드블럭 붙여넣기 모드를 키고 끄기
+nmap <C-n> :bnext<CR> " 다음 순서 버퍼 이동
+nmap <C-p> :bprev<CR> " 이전 순서 버퍼 이동
+nmap <C-e> :e#<CR> " 방금전 버퍼로 이동
 
 
 """""""""""""
@@ -164,7 +177,9 @@ map <Leader>k <Plug>(easymotion-k)
 
 """"""""""""
 "" NERDTree
-map <C-e> :NERDTreeToggle<CR>
+" map <C-n> :NERDTreeToggle<CR>
+" map <Leader>e :NERDTreeToggle<CR>
+map <C-w><C-e> :NERDTreeToggle<CR>
 
 
 """""""""""""
@@ -177,8 +192,8 @@ nmap <silent> <F8>   <Plug>GoldenViewSwitchMain
 nmap <silent> <S-F8> <Plug>GoldenViewSwitchToggle
 
 " 3. jump to next and previous window
-nmap <silent> <C-N>  <Plug>GoldenViewNext
-nmap <silent> <C-P>  <Plug>GoldenViewPrevious
+" nmap <silent> <C-N>  <Plug>GoldenViewNext
+" nmap <silent> <C-P>  <Plug>GoldenViewPrevious
 
 
 """""""""""""""""""
@@ -201,4 +216,129 @@ let g:syntastic_check_on_wq = 0
 """""""""""""""
 "" fugitive.vim
 autocmd QuickFixCmdPost *grep* cwindow
+
+
+""""""""""""
+"" ctrlp.vim
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+"let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$' }
+
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
+
+
+""""""""""""""""""""
+"" neocomplete.vim
+" Note: This option must set it in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!
+"" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions'
+      \ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+  let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+inoremap <expr><C-g> neocomplete#undo_completion()
+inoremap <expr><C-l> neocomplete#complete_common_string()
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  "return pumvisible() ?
+  neocomplete#close_popup() : "\<CR>"
+endfunction
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y> neocomplete#close_popup()
+inoremap <expr><C-e> neocomplete#cancel_popup()
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+" For cursor moving in insert mode(Not recommended)
+"inoremap <expr><Left> neocomplete#close_popup() . "\<Left>"
+"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+"inoremap <expr><Up> neocomplete#close_popup() . "\<Up>"
+"inoremap <expr><Down> neocomplete#close_popup() . "\<Down>"
+" Or set this.
+"let g:neocomplete#enable_cursor_hold_i = 1
+" Or set this.
+"let g:neocomplete#enable_insert_char_pre = 1
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplete#enable_auto_select = 1
+"let g:neocomplete#disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ?
+"\<Down>" : "\<C-x>\<C-u>"
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if  !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" For perlomni.vim setting.
+" https://github.com/c9s/perlomni.vim
+let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
+
+
+"""""""""""
+"" neosnippet
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
 
