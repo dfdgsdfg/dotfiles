@@ -59,7 +59,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'zhaocai/GoldenView.Vim'
-Plugin 'kien/ctrlp.vim'
+"Plugin 'kien/ctrlp.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -99,11 +99,25 @@ set ignorecase " 검색시 대소문자 무시
 set smartcase " 검색시 전체가 대문자이면 대문자만 검색
 set hlsearch " 검색시 일치하는 단어를 전체 문서에서 하이라이팅
 
-nmap <leader>q :nohlsearch<CR> " 검색 하이라이팅 키고 끄기
-nmap <leader>o :set paste!<CR> " 코드블럭 붙여넣기 모드를 키고 끄기
+nmap <Leader>q :nohlsearch<CR> " 검색 하이라이팅 키고 끄기
+nmap <Leader>o :set paste!<CR> " 코드블럭 붙여넣기 모드를 키고 끄기
 nmap <C-n> :bnext<CR> " 다음 순서 버퍼 이동
 nmap <C-p> :bprev<CR> " 이전 순서 버퍼 이동
 nmap <C-e> :e#<CR> " 방금전 버퍼로 이동
+
+""""""""
+"" mouse
+" }}}
+" " Mouse {{{
+" " Send more characters for redraws
+set ttyfast
+  
+" Enable mouse use in all modes
+set mouse=a
+   
+" Set this to the name of your terminal that supports mouse codes.
+" Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
+set ttymouse=xterm2
 
 
 """""""""""""
@@ -222,7 +236,7 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 """"""""""""
 "" ctrlp.vim
-let g:ctrlp_map = '<c-p>'
+let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 'ra'
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
@@ -327,9 +341,9 @@ let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 """""""""""
 "" neosnippet
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " SuperTab like snippets behavior.
 imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
