@@ -41,6 +41,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'fatih/vim-go'
 Plugin 'toyamarinyon/vim-swift'
 Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'dag/vim-fish'
 
 "" editing
 Plugin 'godlygeek/tabular'

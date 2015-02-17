@@ -1,5 +1,6 @@
 function updatevim
-    set SHELL (which sh)
-    vim +BundleInstall! +BundleClean +qall
-    set SHELL (which fish)
+  set SHELL (which sh)
+  #vim +PluginInstall! +PluginClean +qall
+  vim +PluginUpdate +PluginClean +qall
+  set SHELL (which fish)
 end
