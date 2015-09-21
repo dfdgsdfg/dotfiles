@@ -42,6 +42,10 @@ call plug#end()
 """""""""
 "" Config
 
+if !has('nvim')
+  set ttymouse=xterm2
+endif
+
 
 """""""""
 "" editor
