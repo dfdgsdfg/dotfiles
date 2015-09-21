@@ -1,5 +1,6 @@
 # Virtualenv
 set -x PIP_REQUIRE_VIRTUALENV true
+set -x PIP_VIRTUALENV_BASE "$HOME/Virtualenvs"
 set -x PIP_DOWNLOAD_CACHE "$HOME/.pip/cache"
 
 # PATH
