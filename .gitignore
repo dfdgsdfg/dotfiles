@@ -11,6 +11,7 @@ home/.config/omf/theme
 home/.config/ranger/bookmarks
 home/.config/ranger/tagged
 home/.config/ranger/history
+home/.config/ranger/commands.pyo
 
 # vim
 home/.vim/.netrwhist
