@@ -10,7 +10,7 @@
 
 1. Install Fish Shell
   - [Fish Shell](http://fishshell.com/)
-    - [Oh My Fish](https://github.com/bpinto/oh-my-fish)
+    - [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish)
 
 1. Install Homeshick
   - [Homeshick](https://github.com/andsens/homeshick)
@@ -21,15 +21,12 @@
   - [Ranger](https://github.com/hut/ranger)
   - [w3m](http://w3m.sourceforge.net/)
   - [Weechat](http://weechat.org/)
-  - [Vim](http://www.vim.org/)
-    - [Vundle.vim](https://github.com/gmarik/Vundle.vim)
+  - [Vim](http://www.vim.org/), [NeoVim](https://neovim.io/)
+    - [Vim-plug](https://github.com/oh-my-fish/oh-my-fish)
     - [Power Line Font](https://github.com/Lokaltog/powerline-fonts)
   - [Tmux](https://github.com/ThomasAdam/tmux)
   - [editorconfig](https://github.com/editorconfig/editorconfig-core-c)
 
 5. Install Dotfiles
   - `homeshick clone dfdgsdfg/dotfiles`
-
-6. Install Vim Plugins
-  - `vim +PluginInstall +qall`
 

@@ -2,6 +2,11 @@
 home/.config/fish/fish_history
 home/.config/fish/fishd.*
 
+# Oh-my-fish
+home/.config/omf/bundle
+home/.config/omf/revision
+home/.config/omf/theme
+
 # ranger
 home/.config/ranger/bookmarks
 home/.config/ranger/tagged
