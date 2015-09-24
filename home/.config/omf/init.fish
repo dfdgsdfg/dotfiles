@@ -10,4 +10,5 @@ set -x PATH $PATH "$HOME/go/bin"
 set -x GOPATH "$HOME/go"
 set -x EDITOR "/usr/local/bin/nvim"
 
+status --is-interactive; and . (pyenv init -|psub)
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
