@@ -6,6 +6,9 @@ set -x PATH $PATH "$HOME/go/bin"
 # ENV
 set -x EDITOR "/usr/local/bin/nvim"
 
+# vim-devicons
+set -x guifont="Droid Sans Mono for Powerline Nerd Font Complete"
+
 # pyenv and pyenv-virtualenv
 status --is-interactive; and . (pyenv init -|psub)
 status --is-interactive; and . (pyenv virtualenv-init -|psub)

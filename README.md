@@ -4,6 +4,7 @@
   - [iTerm2](http://iterm2.com/)
     - [iTerm Color Scheme](https://github.com/mbadolato/iTerm2-Color-Schemes)
     - `Preferences` -> `Profiles` -> `Terminal` -> `Terminal Emulation` -> Report Terminal Type and chosing `xterm-256color`
+    - `Preferences` -> `Profiles` -> `Text` -> `Non-ASCII Font` -> `Change Font` -> Select Instelled nerd-fonts
 
 1. Install Homebrew
   - [Homebrew](http://brew.sh/)
@@ -24,6 +25,7 @@
   - [Vim](http://www.vim.org/), [NeoVim](https://neovim.io/)
     - [Vim-plug](https://github.com/oh-my-fish/oh-my-fish)
     - [Power Line Font](https://github.com/Lokaltog/powerline-fonts)
+    - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
   - [Tmux](https://github.com/ThomasAdam/tmux)
   - [editorconfig](https://github.com/editorconfig/editorconfig-core-c)
 
