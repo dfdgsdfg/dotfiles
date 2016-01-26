@@ -6,7 +6,7 @@ set -x PATH $PATH "$HOME/miniconda3/bin"
 
 # ENV
 set -x EDITOR "/usr/local/bin/nvim"
-set -x GOPATH "$HOME/workspaces/go"
+set -x GOPATH "$HOME/go"
 
 # vim-devicons
 set -x guifont "Droid Sans Mono for Powerline Nerd Font Complete"
