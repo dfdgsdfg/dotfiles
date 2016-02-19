@@ -11,7 +11,7 @@
 
 1. Install Fish Shell
   - [Fish Shell](http://fishshell.com/)
-    - [Oh My Fish](https://github.com/oh-my-fish/oh-my-fish)
+    - [Fisherman](http://fisherman.sh)
 
 1. Install Homeshick
   - [Homeshick](https://github.com/andsens/homeshick)
