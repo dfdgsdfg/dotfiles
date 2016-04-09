@@ -27,6 +27,7 @@
     - [Power Line Font](https://github.com/Lokaltog/powerline-fonts)
     - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
   - [Tmux](https://github.com/ThomasAdam/tmux)
+    - [tpm](https://github.com/tmux-plugins/tpm)
   - [editorconfig](https://github.com/editorconfig/editorconfig-core-c)
 
 5. Install Dotfiles
