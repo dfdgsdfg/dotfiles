@@ -9,9 +9,10 @@ set -x GOPATH "$HOME/go"
 set -x GOROOT "/usr/local/opt/go/libexec"
 
 # PATH   
+set -x PATH "/usr/local/sbin" $PATH
 set -x PATH "$HOME/bin" $PATH   
-set -x PATH $PATH "$GOPATH/bin"    
 set -x PATH $PATH "$GOROOT/bin"
+set -x PATH $PATH "$GOPATH/bin"    
 set -x PATH $PATH "$HOME/miniconda3/bin"    
 
 # vim-devicons    
