@@ -7,6 +7,8 @@ set -x EDITOR "/usr/local/bin/nvim"
 set -x GOPATH "$HOME/go"    
 set -x GOROOT "/usr/local/opt/go/libexec"
 set -x COMPOSER_HOME "$HOME/.composer"
+#set -x RBENV_ROOT "/usr/local/var/rbenv"
+#set -x PYENV_ROOT "/usr/local/var/pyenv"
 
 # PATH   
 set -x PATH "/usr/local/sbin" $PATH
@@ -22,7 +24,10 @@ set -x guifont "Droid Sans Mono for Powerline Nerd Font Complete"
 # pyenv and pyenv-virtualenv    
 status --is-interactive; and . (pyenv init -|psub)    
 status --is-interactive; and . (pyenv virtualenv-init -|psub)   
-    
+
+# rbenv
+status --is-interactive; and . (rbenv init -|psub)
+
 # eval    
 source "$HOME/perl5/perlbrew/etc/perlbrew.fish"
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
