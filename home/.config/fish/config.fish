@@ -16,7 +16,6 @@ set -x PATH "$HOME/bin" $PATH
 set -x PATH $PATH "$GOROOT/bin"
 set -x PATH $PATH "$GOPATH/bin"    
 set -x PATH $PATH "$COMPOSER_HOME/vendor/bin"
-set -x PATH $PATH "$HOME/miniconda3/bin"    
 
 # vim-devicons    
 set -x guifont "Droid Sans Mono for Powerline Nerd Font Complete"   
