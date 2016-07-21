@@ -16,6 +16,7 @@ set -x PATH "$HOME/bin" $PATH
 set -x PATH $PATH "$GOROOT/bin"
 set -x PATH $PATH "$GOPATH/bin"    
 set -x PATH $PATH "$COMPOSER_HOME/vendor/bin"
+set -x PATH $PATH "/usr/local/share/dotnet"
 
 # vim-devicons    
 set -x guifont "Droid Sans Mono for Powerline Nerd Font Complete"   

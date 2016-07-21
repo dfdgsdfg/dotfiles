@@ -47,6 +47,9 @@ Plug 'evanmiller/nginx-vim-syntax'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 
+"" workflow
+"Plug 'joonty/vdebug' "py2 lagacy
+
 call plug#end()
 
 
