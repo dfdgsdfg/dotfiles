@@ -5,12 +5,14 @@ call plug#begin()
 "" appearance
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
+Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim' tpm에서 odedlaz/tmux-onedark-theme 사용
 Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'junegunn/vim-emoji'
+
 
 "" git
 Plug 'tpope/vim-git'
@@ -18,6 +20,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 "" editing
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
 Plug 'scrooloose/syntastic'
@@ -26,9 +29,9 @@ Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
 
 "" vim
-Plug 'junegunn/fzf',        { 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Lokaltog/vim-easymotion'
 
 "" languages
@@ -40,6 +43,9 @@ Plug 'udalov/kotlin-vim'
 Plug 'tfnico/vim-gradle'
 Plug 'plasticboy/vim-markdown'
 Plug 'stephpy/vim-yaml'
+Plug 'niftylettuce/vim-jinja'
+Plug 'posva/vim-vue'
+Plug 'raichoo/purescript-vim'
 
 "" syntax
 Plug 'ekalinin/Dockerfile.vim'
@@ -100,27 +106,32 @@ endif
 
 """""""""""""
 "" appearance
-set t_Co=256 " http:://unix.stackexchange.com/questions/154012/terminal-colors-for-vim-airline-and-tmux-tmuxline 터미널 컬러 설정
-let g:rehash256 = 1
-colorscheme molokai
+" set t_Co=256 " http:://unix.stackexchange.com/questions/154012/terminal-colors-for-vim-airline-and-tmux-tmuxline 터미널 컬러 설정
+set termguicolors " nvim ture color 지원
+colorscheme one
+" colorscheme molokai
 " colorscheme solarized
 
 " solarized theme
 " http://stackoverflow.com/questions/7278267/incorrect-colors-with-vim-in-iterm2-using-solarized
-let g:solarized_termtrans = 1
-let g:solarized_visibility = "high"
-let g:solarized_contrast = "high"
-set background=dark
+" let g:solarized_termtrans = 1
+" let g:solarized_visibility = "high"
+" let g:solarized_contrast = "high"
+" set background=dark
 
 " molokai theme
-let g:molokai_original = 1
-let g:rehash256 = 1
+" let g:molokai_original = 1
+" let g:rehash256 = 1
 
+" one theme
+set background=dark
 
 """"""""""""""
 "" vim-airline
+"set guifont=<FONT_NAME>:h<FONT_SIZE>
 "set guifont=Source\ Code\ Pro\ for\ Powerline
-set guifont=Sauce\ Code\ Pro\ Nerd\ Font\ Complete:h11
+set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete
+"set guifont=Monaco\ for\ Powerline\ Nerd\ Font\ Complete
 set laststatus=2
 let g:airline_powerline_fonts = 1
 " Enable the list of buffers
@@ -129,8 +140,8 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 "let g:airline_theme='molokai'
 "let g:airline_theme='solarized'
-let g:airline_theme='base16'
-
+"let g:airline_theme='base16'
+let g:airline_theme='one'
 
 """""""""""""""
 "" vim-markdown
@@ -199,9 +210,20 @@ let g:syntastic_javascript_checkers = ['eslint']
 
 nmap <leader>s :SyntasticToggleMode<CR> 
 
+
 """""""""""""""
 "" fugitive.vim
 autocmd QuickFixCmdPost *grep* cwindow
+
+
+"""""""""
+"" tagbar
+nmap <F8> :TagbarToggle<CR>
+
+
+""""""""
+"" deoplete
+let g:deoplete#enable_at_startup = 1
 
 
 """"""""""""
@@ -226,3 +248,4 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)<Paste>
+

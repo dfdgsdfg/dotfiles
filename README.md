@@ -3,6 +3,7 @@
 1. Install iTerm2
   - [iTerm2](http://iterm2.com/)
     - [iTerm Color Scheme](https://github.com/mbadolato/iTerm2-Color-Schemes)
+    - [Atom One Dark theme for Terminal](https://github.com/nathanbuchar/atom-one-dark-terminal)
     - `Preferences` -> `Profiles` -> `Terminal` -> `Terminal Emulation` -> Report Terminal Type and chosing `xterm-256color`
     - `Preferences` -> `Profiles` -> `Text` -> `Non-ASCII Font` -> `Change Font` -> Select Instelled nerd-fonts
 
