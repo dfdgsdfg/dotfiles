@@ -13,20 +13,18 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'nathanaelkane/vim-indent-guides'
 "Plug 'junegunn/vim-emoji'
 
-
 "" git
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 "" editing
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
-Plug 'scrooloose/syntastic'
-Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'w0rp/ale'
 
 "" vim
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -34,25 +32,10 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Lokaltog/vim-easymotion'
 
-"" languages
-Plug 'pangloss/vim-javascript'
-Plug 'fatih/vim-go'
-Plug 'toyamarinyon/vim-swift'
-Plug 'rust-lang/rust.vim'
-Plug 'udalov/kotlin-vim'
+"" languages, syntax
+Plug 'vim-polyglot'
 Plug 'tfnico/vim-gradle'
-Plug 'plasticboy/vim-markdown'
-Plug 'stephpy/vim-yaml'
 Plug 'niftylettuce/vim-jinja'
-Plug 'posva/vim-vue'
-Plug 'raichoo/purescript-vim'
-
-"" syntax
-Plug 'ekalinin/Dockerfile.vim'
-Plug 'dag/vim-fish'
-Plug 'evanmiller/nginx-vim-syntax'
-Plug 'tmux-plugins/vim-tmux'
-Plug 'Matt-Deacalion/vim-systemd-syntax'
 
 "" workflow
 "Plug 'joonty/vdebug' "py2 lagacy
@@ -143,6 +126,11 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 "let g:airline_theme='base16'
 let g:airline_theme='one'
 
+""""""""""
+"" python
+let g:python_host_prog = '/Users/dididi/.pyenv/versions/neovim2/bin/python'
+let g:python3_host_prog = '/Users/dididi/.pyenv/versions/neovim3/bin/python'
+
 """""""""""""""
 "" vim-markdown
 let g:vim_markdown_folding_disabled=1
@@ -195,22 +183,6 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 let g:EditorConfig_core_mode = 'external_command'
 
 
-""""""""""""
-"" syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-
-nmap <leader>s :SyntasticToggleMode<CR> 
-
-
 """""""""""""""
 "" fugitive.vim
 autocmd QuickFixCmdPost *grep* cwindow
@@ -224,21 +196,6 @@ nmap <F8> :TagbarToggle<CR>
 """"""""
 "" deoplete
 let g:deoplete#enable_at_startup = 1
-
-
-""""""""""""
-"" ctrlp.vim
-let g:ctrlp_map = '<Leader>p'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
-
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-"let g:ctrlp_custom_ignore = { 'dir':  '\v[\/]\.(git|hg|svn)$', 'file': '\v\.(exe|so|dll)$' }
-
-let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
-let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'  " Windows
 
 
 """""""""""""
