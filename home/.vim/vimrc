@@ -1,7 +1,12 @@
 set shell=/bin/bash
 set nocompatible              " be iMproved, required
 
-call plug#begin()
+if has('nvim')
+  call plug#begin('~/.local/share/nvim/plugged')
+else
+  call plug#begin('~/.vim/plugged')
+endif
+
 "" appearance
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
@@ -30,16 +35,14 @@ Plug 'w0rp/ale'
 
 "" vim
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 "" languages, syntax
-Plug 'vim-polyglot'
+Plug 'sheerun/vim-polyglot'
+Plug 'idris-hackers/idris-vim'
 Plug 'tfnico/vim-gradle'
 Plug 'niftylettuce/vim-jinja'
-
-"" workflow
-"Plug 'joonty/vdebug' "py2 lagacy
 
 call plug#end()
 
@@ -50,7 +53,10 @@ call plug#end()
 
 """""""""
 "" editor
-syntax enable " 문법강조를 사용
+syntax on
+filetype on
+filetype plugin on 
+filetype indent on
 set number " 행표시
 set imdisable " 모드를 변경하면 자동으로 키보드를 영문 레이아웃으로 변경
 set expandtab " `tab`키를 눌렀을때 `tab`캐릭터 대신 스페이스 캐릭터 삽입
@@ -114,7 +120,8 @@ set background=dark
 "" vim-airline
 "set guifont=<FONT_NAME>:h<FONT_SIZE>
 "set guifont=Source\ Code\ Pro\ for\ Powerline
-set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete
+"set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete
+set guifont=MesloLGM\ Nerd\ Font
 "set guifont=Monaco\ for\ Powerline\ Nerd\ Font\ Complete
 set laststatus=2
 let g:airline_powerline_fonts = 1
@@ -172,11 +179,17 @@ map <Leader>k <Plug>(easymotion-k)
 """"""""""""
 "" NERDTree
 " map <C-n> :NERDTreeToggle<CR>
-" map <Leader>e :NERDTreeToggle<CR>
-map <C-w><C-e> :NERDTreeToggle<CR>
+map <Leader>e :NERDTreeToggle<CR>
+" map <C-w><C-e> :NERDTreeToggle<CR>
+" Auto start NERD tree when opening a directory
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | wincmd p | endif
+
+" Auto start NERD tree if no files are specified
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | exe 'NERDTree' | endif
+
+" Let quit work as expected if after entering :q the only window left open is NERD Tree itself
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 """""""""""""""""""
@@ -211,6 +224,16 @@ nmap ga <Plug>(EasyAlign)<Paste>
 """"""
 "" fzf
 
+" This is the default extra key bindings
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-x': 'split',
+  \ 'ctrl-v': 'vsplit' }
+
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " Mapping selecting mappings
@@ -218,12 +241,14 @@ nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
 omap <leader><tab> <plug>(fzf-maps-o)
 
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
+" fzf statusline
+function! s:fzf_statusline()
+  " Override statusline as you like
+  highlight fzf1 ctermfg=161 ctermbg=251
+  highlight fzf2 ctermfg=23 ctermbg=251
+  highlight fzf3 ctermfg=237 ctermbg=251
+  setlocal statusline=%#fzf1#\ >\ %#fzf2#fz%#fzf3#f
+endfunction
 
-" Advanced customization using autoload functions
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+autocmd! User FzfStatusLine call <SID>fzf_statusline()
 

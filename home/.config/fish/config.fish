@@ -13,7 +13,9 @@ set -x COMPOSER_HOME "$HOME/.composer"
 
 # PATH   
 set -x PATH "/usr/local/sbin" $PATH
-set -x PATH "$HOME/bin" $PATH   
+set -x PATH "$HOME/bin" $PATH
+set -x PATH "$HOME/.local/bin" $PATH
+set -x PATH "$HOME/.cabal/bin" $PATH
 set -x PATH $PATH "$GOROOT/bin"
 set -x PATH $PATH "$GOPATH/bin"    
 set -x PATH $PATH "$COMPOSER_HOME/vendor/bin"

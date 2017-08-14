@@ -7,17 +7,17 @@
     - `Preferences` -> `Profiles` -> `Terminal` -> `Terminal Emulation` -> Report Terminal Type and chosing `xterm-256color`
     - `Preferences` -> `Profiles` -> `Text` -> `Non-ASCII Font` -> `Change Font` -> Select Instelled nerd-fonts
 
-1. Install Homebrew
+2. Install Homebrew
   - [Homebrew](http://brew.sh/)
 
-1. Install Fish Shell
+3. Install Fish Shell
   - [Fish Shell](http://fishshell.com/)
     - [Fisherman](http://fisherman.sh)
 
-1. Install Homeshick
+4. Install Homeshick
   - [Homeshick](https://github.com/andsens/homeshick)
 
-1. Install Packages
+5. Install Packages
   - [Git](http://git-scm.com/)
   - [Tig](https://github.com/jonas/tig)
   - [Ranger](https://github.com/hut/ranger)
@@ -31,6 +31,6 @@
     - [tpm](https://github.com/tmux-plugins/tpm)
   - [editorconfig](https://github.com/editorconfig/editorconfig-core-c)
 
-5. Install Dotfiles
+6. Install Dotfiles
   - `homeshick clone dfdgsdfg/dotfiles`
 
