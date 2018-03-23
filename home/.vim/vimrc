@@ -14,9 +14,8 @@ Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'edkolev/tmuxline.vim' tpm에서 odedlaz/tmux-onedark-theme 사용
 Plug 'nathanaelkane/vim-indent-guides'
-"Plug 'junegunn/vim-emoji'
+Plug 'junegunn/vim-emoji'
 
 "" git
 Plug 'tpope/vim-git'
@@ -24,17 +23,23 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 "" editing
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'w0rp/ale'
-" Plug 'Lokaltog/vim-easymotion'
-" Plug 'justinmk/vim-sneak'
+
+"" complete, snippet
+Plug 'roxma/nvim-completion-manager'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'othree/csscomplete.vim'
+Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 
 "" vim
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -46,6 +51,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'idris-hackers/idris-vim'
 Plug 'tfnico/vim-gradle'
 Plug 'niftylettuce/vim-jinja'
+Plug 'reasonml-editor/vim-reason-plus'
 
 call plug#end()
 
@@ -60,6 +66,7 @@ syntax on
 filetype on
 filetype plugin on 
 filetype indent on
+set hidden "Required for operations modifying multiple buffers like rename.
 set number " 행표시
 set imdisable " 모드를 변경하면 자동으로 키보드를 영문 레이아웃으로 변경
 set expandtab " `tab`키를 눌렀을때 `tab`캐릭터 대신 스페이스 캐릭터 삽입
@@ -158,27 +165,6 @@ let g:vim_markdown_frontmatter=1
 " highlight GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
 
 
-"""""""""""""""""
-"" vim-easymotion
-let g:EasyMotion_do_mapping = 0 " Disable default mappings
-
-" Bi-directional find motion
-" Jump to anywhere you want with minimal keystrokes, with just one key binding.
-" `s{char}{label}`
-nmap s <Plug>(easymotion-s)
-" or
-" `s{char}{char}{label}`
-" Need one more keystroke, but on average, it may be more comfortable.
-nmap s <Plug>(easymotion-s2)
-
-" Turn on case insensitive feature
-let g:EasyMotion_smartcase = 1
-
-" JK motions: Line motions
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-
 """"""""""""
 "" NERDTree
 " map <C-n> :NERDTreeToggle<CR>
@@ -209,11 +195,6 @@ autocmd QuickFixCmdPost *grep* cwindow
 "" tagbar
 nmap <F8> :TagbarToggle<CR>
 
-
-""""""""
-"" deoplete
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#set('ultisnips', 'matchers', ['matcher_fuzzy'])
 
 """""""""""""
 "" vim-easy-align
@@ -258,6 +239,11 @@ autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
 
 """""""""
+"" vim-emoji
+set completefunc=emoji#complete
+
+
+"""""""""
 "" ultisnips
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -268,3 +254,16 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
+
+"""""""""
+"" LanguageClient-neovim
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ }
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
