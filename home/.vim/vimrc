@@ -1,5 +1,4 @@
 set shell=/bin/bash
-set nocompatible              " be iMproved, required
 
 if has('nvim')
   call plug#begin('~/.local/share/nvim/plugged')
@@ -8,8 +7,6 @@ else
 endif
 
 "" appearance
-Plug 'altercation/vim-colors-solarized'
-Plug 'tomasr/molokai'
 Plug 'rakr/vim-one'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -23,6 +20,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 "" editing
+Plug 'liuchengxu/vim-better-default'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -33,6 +31,7 @@ Plug 'tpope/vim-commentary'
 Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'w0rp/ale'
+" Plug 'sbdchd/neoformat'
 
 "" complete, snippet
 Plug 'roxma/nvim-completion-manager'
@@ -62,69 +61,36 @@ call plug#end()
 
 """""""""
 "" editor
-syntax on
-filetype on
-filetype plugin on 
-filetype indent on
-set hidden "Required for operations modifying multiple buffers like rename.
-set number " 행표시
-set imdisable " 모드를 변경하면 자동으로 키보드를 영문 레이아웃으로 변경
-set expandtab " `tab`키를 눌렀을때 `tab`캐릭터 대신 스페이스 캐릭터 삽입
-set tabstop=2 " `tab`키를 눌렀을때 움직이는 칸수
-set shiftwidth=2 " 비주얼 모드 사용시 `<`, `>`키를 통해 좌,우로 쉬프팅되는 칸수
-set softtabstop=2 " `tab`이나 `backspace`키를 눌렀을때, 공백의 캐릭터가 `space`이여도 `tab`으로 인식하여 작동하게 되는 칸수
-set autoindent "  `enter`키로 새줄을 만들었을때 직전 줄을 참고하여 자동으로 들여쓰기  
-" set cindent " `vi`의 `autoindent`와 같으며 C언어 스타일로 자동으로 들여쓰기  
-set smartindent " `if`, `else`등의 키워드가 있을시 다음 줄에서 자동으로 들여쓰기
-set incsearch " 검색시 emacs처럼 `enter`키를 안눌러도 한글자만 입력해도 검색 시작
-set ignorecase " 검색시 대소문자 무시
-set smartcase " 검색시 전체가 대문자이면 대문자만 검색
-set hlsearch " 검색시 일치하는 단어를 전체 문서에서 하이라이팅
-set encoding=utf8
+let mapleader=" "
+let maplocalleader=","
+set mouse=a
 
 nmap <Leader>q :nohlsearch<CR> " 검색 하이라이팅 키고 끄기
 nmap <Leader>o :set paste!<CR> " 코드블럭 붙여넣기 모드를 키고 끄기
-nmap <C-n> :bnext<CR> " 다음 순서 버퍼 이동
-nmap <C-p> :bprev<CR> " 이전 순서 버퍼 이동
-nmap <C-e> :e#<CR> " 방금전 버퍼로 이동
+" nmap <C-n> :bnext<CR> " 다음 순서 버퍼 이동
+" nmap <C-p> :bprev<CR> " 이전 순서 버퍼 이동
+" nmap <C-e> :e#<CR> " 방금전 버퍼로 이동
 
-""""""""
-"" mouse
-" }}}
-" " Mouse {{{
-" " Send more characters for redraws
-set ttyfast
-  
-" Enable mouse use in all modes
-set mouse=a
-   
-" Set this to the name of your terminal that supports mouse codes.
-" Must be one of: xterm, xterm2, netterm, dec, jsbterm, pterm
-if !has('nvim')
-  set ttymouse=xterm2
-endif
 
 """""""""""""
 "" appearance
 " set t_Co=256 " http:://unix.stackexchange.com/questions/154012/terminal-colors-for-vim-airline-and-tmux-tmuxline 터미널 컬러 설정
 set termguicolors " nvim ture color 지원
 colorscheme one
-" colorscheme molokai
-" colorscheme solarized
-
-" solarized theme
-" http://stackoverflow.com/questions/7278267/incorrect-colors-with-vim-in-iterm2-using-solarized
-" let g:solarized_termtrans = 1
-" let g:solarized_visibility = "high"
-" let g:solarized_contrast = "high"
-" set background=dark
-
-" molokai theme
-" let g:molokai_original = 1
-" let g:rehash256 = 1
 
 " one theme
 set background=dark
+
+
+""""""""""""""""""""
+"" vim-better-default
+let g:vim_better_default_key_mapping = 0
+runtime! plugin/default.vim
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set wildmode=full
+
 
 """"""""""""""
 "" vim-airline
@@ -132,16 +98,12 @@ set background=dark
 "set guifont=Source\ Code\ Pro\ for\ Powerline
 "set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete
 set guifont=MesloLGM\ Nerd\ Font
-"set guifont=Monaco\ for\ Powerline\ Nerd\ Font\ Complete
 set laststatus=2
 let g:airline_powerline_fonts = 1
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
-"let g:airline_theme='molokai'
-"let g:airline_theme='solarized'
-"let g:airline_theme='base16'
 let g:airline_theme='one'
 
 """"""""""
@@ -262,8 +224,19 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'reason': ['ocaml-language-server', '--stdio'],
+    \ 'ocaml': ['ocaml-language-server', '--stdio'],
     \ }
 
 nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+
+
+""""""""""'
+"" ale
+
+" Enable completion where available.
+let g:ale_completion_enabled = 1
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1

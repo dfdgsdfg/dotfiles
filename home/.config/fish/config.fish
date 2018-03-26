@@ -12,6 +12,7 @@ set -x HOMEBREW_GITHUB_API_TOKEN "***REMOVED***"
 set -x KUBECONFIG "/Users/dididi/.bluemix/plugins/container-service/clusters/mycluster/kube-config-mel01-mycluster.yml"
 #set -x RBENV_ROOT "/usr/local/var/rbenv"
 #set -x PYENV_ROOT "/usr/local/var/pyenv"
+set -x NVM_DIR "$HOME/.nvm"
 
 # PATH   
 set -x PATH "$HOME/bin" $PATH
