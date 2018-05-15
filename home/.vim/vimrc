@@ -31,6 +31,7 @@ Plug 'tpope/vim-commentary'
 Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'w0rp/ale'
+Plug 'metakirby5/codi.vim'
 " Plug 'sbdchd/neoformat'
 
 "" complete, snippet
@@ -84,12 +85,18 @@ set background=dark
 
 """"""""""""""""""""
 "" vim-better-default
-let g:vim_better_default_key_mapping = 0
+let g:vim_better_default_persistent_undo = 1
 runtime! plugin/default.vim
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
 set wildmode=full
+
+
+""""""""""""""""""""
+"" vim-vue
+let g:vue_disable_pre_processors=1
+autocmd FileType vue syntax sync fromstart
 
 
 """"""""""""""
@@ -199,6 +206,14 @@ endfunction
 
 autocmd! User FzfStatusLine call <SID>fzf_statusline()
 
+nnoremap <silent> <Leader>t :Tags<CR>
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>w :Windows<CR>
+nnoremap <silent> <leader>l :BLines<CR>
+nnoremap <silent> <leader>? :History<CR>
+nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
+nnoremap <silent> <leader>. :AgIn<space>
 
 """""""""
 "" vim-emoji
