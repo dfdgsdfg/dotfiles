@@ -13,6 +13,7 @@ set -x KUBECONFIG "/Users/dididi/.bluemix/plugins/container-service/clusters/myc
 #set -x RBENV_ROOT "/usr/local/var/rbenv"
 #set -x PYENV_ROOT "/usr/local/var/pyenv"
 set -x NVM_DIR "$HOME/.nvm"
+set -gx nvm_prefix "/usr/local/opt/nvm/"
 
 # PATH   
 set -x PATH "$HOME/bin" $PATH
