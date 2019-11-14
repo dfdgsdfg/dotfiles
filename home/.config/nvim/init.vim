@@ -18,6 +18,7 @@ Plug 'junegunn/vim-emoji'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'mhinz/vim-signify'
 
 "" editing
 Plug 'liuchengxu/vim-better-default'
@@ -31,15 +32,14 @@ Plug 'tpope/vim-commentary'
 Plug 'majutsushi/tagbar'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'w0rp/ale'
+Plug 'luochen1990/rainbow'
 Plug 'metakirby5/codi.vim'
 " Plug 'sbdchd/neoformat'
 
 "" complete, snippet
-Plug 'roxma/nvim-completion-manager'
-Plug 'SirVer/ultisnips'
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'othree/csscomplete.vim'
-Plug 'roxma/nvim-cm-tern',  {'do': 'npm install'}
 
 "" vim
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -47,6 +47,7 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 
 "" languages, syntax
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sheerun/vim-polyglot'
 Plug 'idris-hackers/idris-vim'
 Plug 'tfnico/vim-gradle'
@@ -174,6 +175,16 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)<Paste>
 
 
+"""""""""'
+"" rainbow
+let g:rainbow_active = 1
+
+
+
+"""""""""""
+"" coc
+
+
 """"""
 "" fzf
 set rtp+=/usr/local/opt/fzf
@@ -214,6 +225,8 @@ nnoremap <silent> <leader>l :BLines<CR>
 nnoremap <silent> <leader>? :History<CR>
 nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
 nnoremap <silent> <leader>. :AgIn<space>
+nnoremap <silent> <leader>g :Rg<space>
+
 
 """""""""
 "" vim-emoji
@@ -255,3 +268,7 @@ nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
 let g:ale_completion_enabled = 1
 " Set this. Airline will handle the rest.
 let g:airline#extensions#ale#enabled = 1
+
+"""""""""""""
+"" vim-polyglot
+let g:polyglot_disabled = ['go']
