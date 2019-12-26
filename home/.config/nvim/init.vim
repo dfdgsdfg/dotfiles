@@ -8,8 +8,9 @@ endif
 
 "" appearance
 Plug 'rakr/vim-one'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'junegunn/vim-emoji'
@@ -99,20 +100,6 @@ set wildmode=full
 let g:vue_disable_pre_processors=1
 autocmd FileType vue syntax sync fromstart
 
-
-""""""""""""""
-"" vim-airline
-"set guifont=<FONT_NAME>:h<FONT_SIZE>
-"set guifont=Source\ Code\ Pro\ for\ Powerline
-"set guifont=Meslo\ LG\ M\ Regular\ for\ Powerline\ Nerd\ Font\ Complete
-set guifont=MesloLGM\ Nerd\ Font
-set laststatus=2
-let g:airline_powerline_fonts = 1
-" Enable the list of buffers
-let g:airline#extensions#tabline#enabled = 1
-" Show just the filename
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline_theme='one'
 
 """"""""""
 "" python
@@ -226,6 +213,26 @@ nnoremap <silent> <leader>? :History<CR>
 nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
 nnoremap <silent> <leader>. :AgIn<space>
 nnoremap <silent> <leader>g :Rg<space>
+
+" Using floating windows of Neovim to start fzf
+if has('nvim')
+  let $FZF_DEFAULT_OPTS .= ' --border --margin=0,2'
+
+  function! FloatingFZF()
+    let width = float2nr(&columns * 0.9)
+    let height = float2nr(&lines * 0.6)
+    let opts = { 'relative': 'editor',
+               \ 'row': (&lines - height) / 2,
+               \ 'col': (&columns - width) / 2,
+               \ 'width': width,
+               \ 'height': height }
+
+    let win = nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    call setwinvar(win, '&winhighlight', 'NormalFloat:Normal')
+  endfunction
+
+  let g:fzf_layout = { 'window': 'call FloatingFZF()' }
+endif
 
 
 """""""""
