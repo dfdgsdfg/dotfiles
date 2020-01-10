@@ -8,10 +8,6 @@ set -x EDITOR "/usr/local/bin/nvim"
 set -x GOPATH "$HOME/go"    
 set -x GOROOT "/usr/local/opt/go/libexec"
 set -x COMPOSER_HOME "$HOME/.composer"
-#set -x RBENV_ROOT "/usr/local/var/rbenv"
-#set -x PYENV_ROOT "/usr/local/var/pyenv"
-set -x NVM_DIR "$HOME/.nvm"
-set -gx nvm_prefix "/usr/local/opt/nvm/"
 set -x GO111MODULE "on"
 # flutter
 # https://github.com/flutter/flutter/issues/25112
@@ -32,22 +28,14 @@ set -Ua fish_user_paths "$GOROOT/bin"
 set -Ua fish_user_paths "$GOPATH/bin"
 set -Ua fish_user_paths "$COMPOSER_HOME/vendor/bin"
 set -Ua fish_user_paths "/usr/local/share/dotnet"
-set -Ua fish_user_paths "$HOME/.rbenv/bin"
-set -Ua fish_user_paths "$HOME/.rbenv/shims"
 set -Ua fish_user_paths "$HOME/opt/google-cloud-sdk/bin"
 set -Ua fish_user_paths "$HOME/.fastlane/bin"     
-
-# pyenv and pyenv-virtualenv    
-status --is-interactive; and source (pyenv init -|psub)    
-status --is-interactive; and source (pyenv virtualenv-init -|psub)   
-
-# rbenv
-status --is-interactive; and source (rbenv init -|psub)
 
 # eval    
 source "$HOME/perl5/perlbrew/etc/perlbrew.fish"
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
-source /usr/local/opt/asdf/asdf.fish
+source (brew --prefix asdf)/asdf.fish
+eval (direnv hook fish)
 
 # iterm
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish

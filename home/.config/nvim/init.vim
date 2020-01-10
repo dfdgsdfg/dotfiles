@@ -103,8 +103,8 @@ autocmd FileType vue syntax sync fromstart
 
 """"""""""
 "" python
-let g:python_host_prog = '/Users/dididi/.pyenv/versions/neovim2/bin/python'
-let g:python3_host_prog = '/Users/dididi/.pyenv/versions/neovim3/bin/python'
+let g:python_host_prog = '/Users/dididi/.asdf/shims/python2'
+let g:python3_host_prog = '/Users/dididi/.asdf/shims/python'
 
 """""""""""""""
 "" vim-markdown
