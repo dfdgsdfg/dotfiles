@@ -14,12 +14,12 @@ set -x GO111MODULE "on"
 set -gx NO_PROXY localhost,127.0.0.1
 source ~/.config/fish/credential.fish
 
-
 # PATH   
 set -U fish_user_paths
 set -Up fish_user_paths "$HOME/bin" 
 set -Up fish_user_paths "$HOME/.local/bin" 
 set -Up fish_user_paths "/usr/local/sbin" 
+set -Ua fish_user_paths "$HOME/.asdf/bin:$PATH"
 set -Ua fish_user_paths "$HOME/.cabal/bin"
 set -Ua fish_user_paths "$HOME/.cargo/bin"
 set -Ua fish_user_paths "$HOME/.pub-cache/bin"
@@ -32,10 +32,15 @@ set -Ua fish_user_paths "$HOME/opt/google-cloud-sdk/bin"
 set -Ua fish_user_paths "$HOME/.fastlane/bin"     
 
 # eval    
-source "$HOME/perl5/perlbrew/etc/perlbrew.fish"
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 source (brew --prefix asdf)/asdf.fish
 eval (direnv hook fish)
+
+## asdf-java
+asdf current java 2>&1 > /dev/null
+if test $status -eq 0
+    set -x JAVA_HOME (asdf where java)
+end
 
 # iterm
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
