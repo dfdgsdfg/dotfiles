@@ -18,6 +18,7 @@ source ~/.config/fish/credential.fish
 set -U fish_user_paths
 set -Up fish_user_paths "$HOME/bin" 
 set -Up fish_user_paths "$HOME/.local/bin" 
+set -Up fish_user_paths "/usr/local/bin" 
 set -Up fish_user_paths "/usr/local/sbin" 
 set -Ua fish_user_paths "$HOME/.asdf/bin:$PATH"
 set -Ua fish_user_paths "$HOME/.cabal/bin"
