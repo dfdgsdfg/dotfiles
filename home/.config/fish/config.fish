@@ -36,6 +36,7 @@ set -Ua fish_user_paths "$HOME/.fastlane/bin"
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 source (brew --prefix asdf)/asdf.fish
 eval (direnv hook fish)
+navi widget fish | source
 
 ## asdf-java
 asdf current java 2>&1 > /dev/null
