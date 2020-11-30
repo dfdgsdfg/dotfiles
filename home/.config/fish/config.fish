@@ -6,7 +6,7 @@ set fisher_config ~/.config/fisherman
 set -x LANG "ko_KR.UTF-8"
 set -x EDITOR "/usr/local/bin/nvim"   
 set -x GOPATH "$HOME/go"    
-set -x GOROOT "/usr/local/opt/go/libexec"
+set -x GOROOT (asdf where golang)/go/
 set -x COMPOSER_HOME "$HOME/.composer"
 set -x GO111MODULE "on"
 # flutter
@@ -31,6 +31,7 @@ set -Ua fish_user_paths "$COMPOSER_HOME/vendor/bin"
 set -Ua fish_user_paths "/usr/local/share/dotnet"
 set -Ua fish_user_paths "$HOME/opt/google-cloud-sdk/bin"
 set -Ua fish_user_paths "$HOME/.fastlane/bin"     
+set -Ua fish_user_paths "$HOME/Library/Android/sdk/platform-tools/"
 
 # eval    
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"

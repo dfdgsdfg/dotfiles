@@ -1,4 +1,4 @@
-set shell=/bin/bash
+
 
 if has('nvim')
   call plug#begin('~/.local/share/nvim/plugged')
@@ -22,11 +22,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 
 "" editing
+Plug 'sheerun/vim-polyglot'
 Plug 'liuchengxu/vim-better-default'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+" Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -38,7 +40,7 @@ Plug 'metakirby5/codi.vim'
 " Plug 'sbdchd/neoformat'
 
 "" complete, snippet
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -46,14 +48,6 @@ Plug 'honza/vim-snippets'
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
-
-"" languages, syntax
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'sheerun/vim-polyglot'
-Plug 'idris-hackers/idris-vim'
-Plug 'tfnico/vim-gradle'
-Plug 'niftylettuce/vim-jinja'
-Plug 'reasonml-editor/vim-reason-plus'
 
 call plug#end()
 
