@@ -22,13 +22,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 
 "" editing
-Plug 'sheerun/vim-polyglot'
 Plug 'liuchengxu/vim-better-default'
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
-" Plug 'neovim/nvim-lspconfig'
 Plug 'junegunn/vim-easy-align'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
@@ -39,15 +33,23 @@ Plug 'luochen1990/rainbow'
 Plug 'metakirby5/codi.vim'
 " Plug 'sbdchd/neoformat'
 
-"" complete, snippet
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
 "" vim
 Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
+
+"" syntax lsc
+Plug 'sheerun/vim-polyglot'
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+" Plug 'neovim/nvim-lspconfig'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"" complete, snippet
+" Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 call plug#end()
 
@@ -272,4 +274,3 @@ let g:airline#extensions#ale#enabled = 1
 
 """""""""""""
 "" vim-polyglot
-let g:polyglot_disabled = ['go']
