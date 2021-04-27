@@ -2,6 +2,13 @@
 set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
 
+# eval    
+source "$HOME/.homesick/repos/homeshick/homeshick.fish"
+source (brew --prefix asdf)/asdf.fish
+eval (direnv hook fish)
+navi widget fish | source
+zoxide init fish | source
+
 # ENV   
 set -x LANG "ko_KR.UTF-8"
 set -x EDITOR "/usr/local/bin/nvim"   
@@ -35,13 +42,6 @@ set -Ua fish_user_paths "$HOME/opt/google-cloud-sdk/bin"
 set -Ua fish_user_paths "$HOME/.fastlane/bin"     
 set -Ua fish_user_paths "$HOME/Library/Android/sdk/platform-tools/"
 
-# eval    
-source "$HOME/.homesick/repos/homeshick/homeshick.fish"
-source (brew --prefix asdf)/asdf.fish
-eval (direnv hook fish)
-navi widget fish | source
-zoxide init fish | source
-
 ## asdf-java
 asdf current java 2>&1 > /dev/null
 if test $status -eq 0
@@ -58,6 +58,7 @@ alias la="ls -a"
 alias lla="ls -la"
 alias lt="ls --tree"
 alias cat='bat'
+alias z='zoxide'
 
 # bind
 bind -M insert "ç" fzf-cd-widget
