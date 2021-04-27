@@ -9,6 +9,8 @@ set -x GOPATH "$HOME/go"
 set -x GOROOT (asdf where golang)/go/
 set -x COMPOSER_HOME "$HOME/.composer"
 set -x GO111MODULE "on"
+set -x GEM_HOME $HOME/.gem
+set -x PATH $GEM_HOME/bin:$PATH
 # flutter
 # https://github.com/flutter/flutter/issues/25112
 set -gx NO_PROXY localhost,127.0.0.1
@@ -38,6 +40,7 @@ source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 source (brew --prefix asdf)/asdf.fish
 eval (direnv hook fish)
 navi widget fish | source
+zoxide init fish | source
 
 ## asdf-java
 asdf current java 2>&1 > /dev/null
