@@ -171,6 +171,16 @@ let g:rainbow_active = 1
 
 """"""
 "" fzf
+nnoremap <silent> <Leader>t :Tags<CR>
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>w :Windows<CR>
+nnoremap <silent> <leader>l :BLines<CR>
+nnoremap <silent> <leader>? :History<CR>
+nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
+nnoremap <silent> <leader>. :AgIn<space>
+nnoremap <silent> <leader>g :Rg<space>
+
 
 """""""""
 "" vim-emoji
