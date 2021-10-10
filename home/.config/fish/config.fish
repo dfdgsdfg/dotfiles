@@ -18,6 +18,7 @@ set -x COMPOSER_HOME "$HOME/.composer"
 set -x GO111MODULE "on"
 set -x GEM_HOME $HOME/.gem
 set -x PATH $GEM_HOME/bin:$PATH
+set -x CLOUDSDK_PYTHON_SITEPACKAGES "1"
 # flutter
 # https://github.com/flutter/flutter/issues/25112
 set -gx NO_PROXY localhost,127.0.0.1
@@ -58,7 +59,8 @@ alias la="ls -a"
 alias lla="ls -la"
 alias lt="ls --tree"
 alias cat='bat'
-alias z='zoxide'
 
 # bind
 bind -M insert "ç" fzf-cd-widget
+
+source (brew --prefix asdf)/asdf.fish
