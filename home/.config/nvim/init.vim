@@ -210,10 +210,11 @@ nmap <Leader>o :set paste!<CR> " 코드블럭 붙여넣기 모드를 키고 끄�
 " nmap <C-p> :bprev<CR> " 이전 순서 버퍼 이동
 " nmap <C-e> :e#<CR> " 방금전 버퍼로 이동
 
-"" python
-let g:python_host_prog = '~/.asdf/shims/python2'
+"" provider
+let g:loaded_python_provider = 0
+" let g:python_host_prog = '~/.asdf/shims/python2'
 let g:python3_host_prog = '~/.asdf/shims/python'
-let g:ruby_hot_prog = '~/.asdf/shims/ruby'
+let g:ruby_host_prog = 'arch -x86_64 neovim-ruby-host'
 
 "" vim-better-default
 let g:vim_better_default_persistent_undo = 1
