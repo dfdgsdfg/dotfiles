@@ -6,13 +6,13 @@ set fisher_config ~/.config/fisherman
 
 # PATH   
 set -U fish_user_paths
+set -Up fish_user_paths "$HOME/.asdf/bin"
 set -Up fish_user_paths "/usr/local/sbin"
 set -Up fish_user_paths "/usr/local/bin"
 set -Up fish_user_paths "/opt/homebrew/sbin"
 set -Up fish_user_paths "/opt/homebrew/bin"
 set -Up fish_user_paths "$HOME/.local/bin"
 set -Up fish_user_paths "$HOME/bin"
-set -Ua fish_user_paths "$HOME/.asdf/bin:$PATH"
 set -Ua fish_user_paths "$HOME/.cabal/bin"
 set -Ua fish_user_paths "$HOME/.cargo/bin"
 set -Ua fish_user_paths "$HOME/.pub-cache/bin"
