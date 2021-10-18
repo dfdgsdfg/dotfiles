@@ -1,65 +1,206 @@
+set termguicolors
 
+call plug#begin('~/.local/share/nvim/plugged')
 
-if has('nvim')
-  call plug#begin('~/.local/share/nvim/plugged')
-else
-  call plug#begin('~/.vim/plugged')
-endif
+" defaults
+Plug 'liuchengxu/vim-better-default'  " lagacy
+Plug 'editorconfig/editorconfig-vim'  " lagacy
 
-"" appearance
-Plug 'rakr/vim-one'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-Plug 'itchyny/lightline.vim'
-Plug 'ryanoasis/vim-devicons'
-Plug 'nathanaelkane/vim-indent-guides'
-Plug 'junegunn/vim-emoji'
+"" LSP
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-lua/lsp-status.nvim'
+Plug 'nvim-lua/lsp_extensions.nvim'
+Plug 'glepnir/lspsaga.nvim'
+Plug 'folke/lsp-colors.nvim'
+
+"" completion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/nvim-cmp'
+
+"" syntax
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+Plug 'blackcauldron7/surround.nvim'
+
+"" snippet
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
+
+"" fuzzy find
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+
+"" color 
+Plug 'norcalli/nvim-colorizer.lua'
+
+"" colorscheme
+Plug 'navarasu/onedark.nvim'
+
+"" icon
+Plug 'kyazdani42/nvim-web-devicons'
+
+"" neovim lua dev 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+
+"" tabbar
+Plug 'romgrk/barbar.nvim'
+
+"" statusline
+Plug 'hoob3rt/lualine.nvim'
+
+"" coursorline
+Plug 'yamatsum/nvim-cursorline'
+
+"" editing support 
+Plug 'p00f/nvim-ts-rainbow'
+Plug 'JoosepAlviste/nvim-ts-context-commentstring'
+
+"" formatting 
+Plug 'mhartington/formatter.nvim'
+
+"" ident
+Plug 'lukas-reineke/indent-blankline.nvim'
+
+"" file explorer
+Plug 'kyazdani42/nvim-tree.lua'
 
 "" git
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-git' " lagacy
+Plug 'tpope/vim-fugitive' " lagacy
+Plug 'airblade/vim-gitgutter' " lagacy
+Plug 'mhinz/vim-signify' " lagacy
 
-"" editing
-Plug 'liuchengxu/vim-better-default'
-Plug 'junegunn/vim-easy-align'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'majutsushi/tagbar'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'w0rp/ale'
-Plug 'luochen1990/rainbow'
-Plug 'metakirby5/codi.vim'
-" Plug 'sbdchd/neoformat'
+"" language support
+Plug 'akinsho/flutter-tools.nvim'
+Plug 'gennaro-tedesco/nvim-jqx'
 
-"" vim
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'Xuyuanp/nerdtree-git-plugin'
+"" comment
+Plug 'terrortylor/nvim-comment'
 
-"" syntax lsc
-Plug 'sheerun/vim-polyglot'
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
-" Plug 'neovim/nvim-lspconfig'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"" formatting
+Plug 'mhartington/formatter.nvim'
 
-"" complete, snippet
-" Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+"" keybinding
+Plug 'folke/which-key.nvim'
 
 call plug#end()
 
 
-"""""""""
-"" Config
+"""""""""""""
+"" lua config
+
+
+lua << EOF
+  -- lsp
+  local lspconfig = require'lspconfig'
+  lspconfig.tsserver.setup{
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  }
+  lspconfig.dartls.setup{
+    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  }
+
+  local saga = require'lspsaga'
+  saga.init_lsp_saga()
+  
+
+  -- completion
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      expand = function(args)
+        vim.fn["vsnip#anonymous"](args.body)
+      end,
+    },
+    mapping = {
+      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.close(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    },
+    sources = {
+      { name = 'nvim_lsp' },
+      { name = 'vsnip' },
+      { name = 'buffer' },
+    }
+  })
+  
+  -- syntax
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    --ignore_install = { "javascript" }, -- List of parsers to ignore installing
+    highlight = {
+      enable = true,              -- false will disable the whole extension
+      -- disable = { "c", "rust" },  -- list of language that will be disabled
+      -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+      -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+      -- Using this option may slow down your editor, and you may see some duplicate highlights.
+      -- Instead of true it can also be a list of languages
+      additional_vim_regex_highlighting = false,
+      },
+      context_commentstring = {
+        enable = true
+      }
+    }
+  require"surround".setup {mappings_style = "sandwich"}
+  
+  -- snippet
+
+  -- fuzzy finder
+
+  -- color 
+  require'colorizer'.setup()
+
+  -- colorscheme
+	require('onedark').setup()
+
+  -- utility
+
+  -- lua development
+
+  -- tabline
+
+  -- statusline
+  require('lualine').setup{ options = { theme = 'onedark' } }
+
+  -- cursorline
+
+  -- indent
+
+  -- file explorer
+  require'nvim-tree'.setup{}
+
+  -- git 
+
+  -- language support 
+  require("flutter-tools").setup{}
+
+  -- comment 
+  require('nvim_comment').setup()
+
+  -- editing support 
+
+  -- formatting  
+
+  -- keybinding  
+  require("which-key").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+
+EOF
 
 
 """""""""
+"" vim config
+
+
 "" editor
 let mapleader=" "
 let maplocalleader=","
@@ -71,18 +212,10 @@ nmap <Leader>o :set paste!<CR> " 코드블럭 붙여넣기 모드를 키고 끄�
 " nmap <C-p> :bprev<CR> " 이전 순서 버퍼 이동
 " nmap <C-e> :e#<CR> " 방금전 버퍼로 이동
 
+"" python
+let g:python_host_prog = '~/.asdf/shims/python2'
+let g:python3_host_prog = '~/.asdf/shims/python'
 
-"""""""""""""
-"" appearance
-" set t_Co=256 " http:://unix.stackexchange.com/questions/154012/terminal-colors-for-vim-airline-and-tmux-tmuxline 터미널 컬러 설정
-set termguicolors " nvim ture color 지원
-colorscheme one
-
-" one theme
-set background=dark
-
-
-""""""""""""""""""""
 "" vim-better-default
 let g:vim_better_default_persistent_undo = 1
 runtime! plugin/default.vim
@@ -91,137 +224,17 @@ set tabstop=2
 set softtabstop=2
 set wildmode=full
 
-
-""""""""""""""""""""
-"" vim-vue
-let g:vue_disable_pre_processors=1
-autocmd FileType vue syntax sync fromstart
-
-
-""""""""""
-"" python
-let g:python_host_prog = '/Users/dididi/.asdf/shims/python2'
-let g:python3_host_prog = '/Users/dididi/.asdf/shims/python'
-
-"""""""""""""""
-"" vim-markdown
-let g:vim_markdown_folding_disabled=1
-let g:vim_markdown_frontmatter=1
-
-
-""""""""""""""""
-"" vim-gitgutter
-" https://github.com/airblade/vim-gitgutter/issues/164
-" highlight clear SignColumn
-" highlight GitGutterAdd ctermfg=green guifg=darkgreen
-" highlight GitGutterChange ctermfg=yellow guifg=darkyellow
-" highlight GitGutterDelete ctermfg=red guifg=darkred
-" highlight GitGutterChangeDelete ctermfg=yellow guifg=darkyellow
-
-
-""""""""""""
-"" NERDTree
-" map <C-n> :NERDTreeToggle<CR>
-map <Leader>e :NERDTreeToggle<CR>
-" map <C-w><C-e> :NERDTreeToggle<CR>
-" Auto start NERD tree when opening a directory
-" autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-" Auto start NERD tree if no files are specified
-" autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | exe 'NERDTree' | endif
-
-" Let quit work as expected if after entering :q the only window left open is NERD Tree itself
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-
-"""""""""""""""""""
 "" EditorConfig-vim
 let g:EditorConfig_core_mode = 'external_command'
 
+"" telescope
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-"""""""""""""""
-"" fugitive.vim
-autocmd QuickFixCmdPost *grep* cwindow
+"" nvim-tree
+nnoremap <Leader>e :NvimTreeToggle<CR>
 
-
-"""""""""
-"" tagbar
-nmap <F8> :TagbarToggle<CR>
-
-
-"""""""""""""
-"" vim-easy-align
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)<Paste>
-
-
-"""""""""'
-"" rainbow
-let g:rainbow_active = 1
-
-
-
-"""""""""""
-"" coc
-
-
-""""""
-"" fzf
-nnoremap <silent> <Leader>t :Tags<CR>
-nnoremap <silent> <leader>f :Files<CR>
-nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>w :Windows<CR>
-nnoremap <silent> <leader>l :BLines<CR>
-nnoremap <silent> <leader>? :History<CR>
-nnoremap <silent> <leader>/ :execute 'Ag ' . input('Ag/')<CR>
-nnoremap <silent> <leader>. :AgIn<space>
-nnoremap <silent> <leader>g :Rg<space>
-
-
-"""""""""
-"" vim-emoji
-set completefunc=emoji#complete
-
-
-"""""""""
-"" ultisnips
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-
-"""""""""
-"" LanguageClient-neovim
-
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'reason': ['ocaml-language-server', '--stdio'],
-    \ 'ocaml': ['ocaml-language-server', '--stdio'],
-    \ }
-
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
-
-""""""""""'
-"" ale
-
-" Enable completion where available.
-let g:ale_completion_enabled = 1
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
-
-"""""""""""""
-"" vim-polyglot
+"" formatter.nvim  
+nnoremap <silent> <leader>f :Format<CR>
