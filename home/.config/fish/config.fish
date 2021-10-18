@@ -2,6 +2,25 @@
 set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
 
+# PATH   
+set -U fish_user_paths
+set -Up fish_user_paths "$HOME/bin" 
+set -Up fish_user_paths "$HOME/.local/bin" 
+set -Up fish_user_paths "/usr/local/bin" 
+set -Up fish_user_paths "/usr/local/sbin" 
+set -Ua fish_user_paths "$HOME/.asdf/bin:$PATH"
+set -Ua fish_user_paths "$HOME/.cabal/bin"
+set -Ua fish_user_paths "$HOME/.cargo/bin"
+set -Ua fish_user_paths "$HOME/.pub-cache/bin"
+set -Ua fish_user_paths "$HOME/flutter/bin"
+set -Ua fish_user_paths "$GOROOT/bin"
+set -Ua fish_user_paths "$GOPATH/bin"
+set -Ua fish_user_paths "$COMPOSER_HOME/vendor/bin"
+set -Ua fish_user_paths "/usr/local/share/dotnet"
+set -Ua fish_user_paths "$HOME/opt/google-cloud-sdk/bin"
+set -Ua fish_user_paths "$HOME/.fastlane/bin"     
+set -Ua fish_user_paths "$HOME/Library/Android/sdk/platform-tools/"
+
 # eval    
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 source (brew --prefix asdf)/asdf.fish
@@ -23,25 +42,6 @@ set -x CLOUDSDK_PYTHON_SITEPACKAGES "1"
 # https://github.com/flutter/flutter/issues/25112
 set -gx NO_PROXY localhost,127.0.0.1
 source ~/.config/fish/credential.fish
-
-# PATH   
-set -U fish_user_paths
-set -Up fish_user_paths "$HOME/bin" 
-set -Up fish_user_paths "$HOME/.local/bin" 
-set -Up fish_user_paths "/usr/local/bin" 
-set -Up fish_user_paths "/usr/local/sbin" 
-set -Ua fish_user_paths "$HOME/.asdf/bin:$PATH"
-set -Ua fish_user_paths "$HOME/.cabal/bin"
-set -Ua fish_user_paths "$HOME/.cargo/bin"
-set -Ua fish_user_paths "$HOME/.pub-cache/bin"
-set -Ua fish_user_paths "$HOME/flutter/bin"
-set -Ua fish_user_paths "$GOROOT/bin"
-set -Ua fish_user_paths "$GOPATH/bin"
-set -Ua fish_user_paths "$COMPOSER_HOME/vendor/bin"
-set -Ua fish_user_paths "/usr/local/share/dotnet"
-set -Ua fish_user_paths "$HOME/opt/google-cloud-sdk/bin"
-set -Ua fish_user_paths "$HOME/.fastlane/bin"     
-set -Ua fish_user_paths "$HOME/Library/Android/sdk/platform-tools/"
 
 ## asdf-java
 asdf current java 2>&1 > /dev/null
