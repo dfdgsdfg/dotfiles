@@ -78,7 +78,7 @@ Plug 'akinsho/flutter-tools.nvim'
 Plug 'gennaro-tedesco/nvim-jqx'
 
 "" comment
-Plug 'terrortylor/nvim-comment'
+Plug 'numToStr/Comment.nvim'
 
 "" formatting
 Plug 'mhartington/formatter.nvim'
@@ -181,7 +181,7 @@ lua << EOF
   require("flutter-tools").setup{}
 
   -- comment 
-  require('nvim_comment').setup()
+  require('Comment').setup()
 
   -- editing support 
 
