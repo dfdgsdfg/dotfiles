@@ -68,10 +68,7 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
 
 "" git
-Plug 'tpope/vim-git' " lagacy
-Plug 'tpope/vim-fugitive' " lagacy
-Plug 'airblade/vim-gitgutter' " lagacy
-Plug 'mhinz/vim-signify' " lagacy
+Plug 'lewis6991/gitsigns.nvim'
 
 "" language support
 Plug 'akinsho/flutter-tools.nvim'
@@ -175,7 +172,8 @@ lua << EOF
   -- file explorer
   require'nvim-tree'.setup{}
 
-  -- git 
+  -- git
+  require('gitsigns').setup()
 
   -- language support 
   require("flutter-tools").setup{}
