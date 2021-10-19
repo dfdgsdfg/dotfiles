@@ -114,6 +114,7 @@ Plug 'kyazdani42/nvim-tree.lua'
 
 "" git
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'TimUntersberger/neogit'
 
 "" language support
 Plug 'akinsho/flutter-tools.nvim'
@@ -217,6 +218,9 @@ lua << EOF
 
   -- git
   require('gitsigns').setup()
+  
+  local neogit = require('neogit')
+  neogit.setup {}
 
   -- language support 
   require("flutter-tools").setup{}
