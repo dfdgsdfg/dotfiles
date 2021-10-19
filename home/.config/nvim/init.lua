@@ -255,6 +255,18 @@ require('impatient')
   -- keybinding 
   local wk = require("which-key")
   wk.setup{}
+  wk.register({
+    ["<leader>c"] = { name = "+color" },
+    ["<leader>f"] = { name = "+file" },
+    ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find File" },
+    ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    ["<leader>fg"] = { "<cmd>Telescope live_grep<cr>", "Grep" },
+    ["<leader>fb"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    ["<leader>fn"] = { "<cmd>Telescope help_tags<cr>", "Tags" },
+    ["<leader>fn"] = { "<cmd>enew<cr>", "New File" },
+    -- ["<leader>e"] = { name = "+explorer" },
+    ["<leader>e"] = { "<cmd>NvimTreeToggle<cr>", "File Explorer"},
+  })
 
 ---- vim settings ----
 
