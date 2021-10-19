@@ -266,6 +266,7 @@ require('impatient')
     ["<leader>fn"] = { "<cmd>enew<cr>", "New File" },
     -- ["<leader>e"] = { name = "+explorer" },
     ["<leader>e"] = { "<cmd>NvimTreeToggle<cr>", "File Explorer"},
+    ["<leader>t"] = { "<cmd>Telescope<cr>", "Telescope"},
   })
 
 ---- vim settings ----
