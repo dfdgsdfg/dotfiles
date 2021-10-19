@@ -1,31 +1,39 @@
 """""""""""""""
 "" defaults
 
-set encoding=UTF-8
-set termguicolors
-set cursorline
 set nocompatible
-set number
-set mouse=a
-set autoindent
-set hlsearch
-set showcmd
-set expandtab
+set encoding=UTF-8
 set shell=fish
-set ai 
-set si 
-set nowrap 
-set smarttab 
+set mouse=a
+set ttyfast
+set termguicolors
+
+set hlsearch
+set incsearch
+set showmatch 
 set ignorecase 
+
+set cursorline
+set number
+set showcmd
+set nowrap 
+
+set expandtab
+set smarttab 
+set autoindent
+set smartindent
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
-set wildmode=full
+
+set wildmenu
+set wildmode=longest:list,full
+
+syntax on
+filetype plugin indent on
 
 let mapleader=" "
 let maplocalleader=","
-
-syntax enable
 
 nmap <Leader>q :nohlsearch<CR> " 검색 하이라이팅 키고 끄기
 nmap <Leader>o :set paste!<CR> " 코드블럭 붙여넣기 모드를 키고 끄기
@@ -48,7 +56,6 @@ Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'folke/lsp-colors.nvim'
-Plug 'ray-x/lsp_signature.nvim'
 
 "" completion
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -138,8 +145,6 @@ lua << EOF
 
   local saga = require'lspsaga'
   saga.init_lsp_saga()
-
-	require "lsp_signature".on_attach()
 
   -- completion
   local cmp = require'cmp'
