@@ -1,10 +1,46 @@
+"""""""""""""""
+"" defaults
+
+set encoding=UTF-8
 set termguicolors
+set cursorline
+set nocompatible
+set number
+set mouse=a
+set autoindent
+set hlsearch
+set showcmd
+set expandtab
+set shell=fish
+set ai 
+set si 
+set nowrap 
+set smarttab 
+set ignorecase 
+set shiftwidth=2
+set tabstop=2
+set softtabstop=2
+set wildmode=full
+
+let mapleader=" "
+let maplocalleader=","
+
+syntax enable
+
+nmap <Leader>q :nohlsearch<CR> " 검색 하이라이팅 키고 끄기
+nmap <Leader>o :set paste!<CR> " 코드블럭 붙여넣기 모드를 키고 끄기
+
+"" provider
+let g:loaded_python_provider = 0
+" let g:python_host_prog = '~/.asdf/shims/python2'
+let g:python3_host_prog = '~/.asdf/shims/python'
+" let g:ruby_host_prog = '~/.asdf/shims/ruby'
+
+
+"""""""""""""""
+"" plug 
 
 call plug#begin('~/.local/share/nvim/plugged')
-
-" defaults
-Plug 'liuchengxu/vim-better-default'  " lagacy
-Plug 'editorconfig/editorconfig-vim'  " lagacy
 
 "" LSP
 Plug 'neovim/nvim-lspconfig'
@@ -12,6 +48,7 @@ Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'glepnir/lspsaga.nvim'
 Plug 'folke/lsp-colors.nvim'
+Plug 'ray-x/lsp_signature.nvim'
 
 "" completion
 Plug 'hrsh7th/cmp-nvim-lsp'
@@ -89,7 +126,6 @@ call plug#end()
 """""""""""""
 "" lua config
 
-
 lua << EOF
   -- lsp
   local lspconfig = require'lspconfig'
@@ -102,7 +138,8 @@ lua << EOF
 
   local saga = require'lspsaga'
   saga.init_lsp_saga()
-  
+
+	require "lsp_signature".on_attach()
 
   -- completion
   local cmp = require'cmp'
@@ -195,37 +232,8 @@ lua << EOF
 EOF
 
 
-"""""""""
+"""""""""""""
 "" vim config
-
-
-"" editor
-let mapleader=" "
-let maplocalleader=","
-set mouse=a
-
-nmap <Leader>q :nohlsearch<CR> " 검색 하이라이팅 키고 끄기
-nmap <Leader>o :set paste!<CR> " 코드블럭 붙여넣기 모드를 키고 끄기
-" nmap <C-n> :bnext<CR> " 다음 순서 버퍼 이동
-" nmap <C-p> :bprev<CR> " 이전 순서 버퍼 이동
-" nmap <C-e> :e#<CR> " 방금전 버퍼로 이동
-
-"" provider
-let g:loaded_python_provider = 0
-" let g:python_host_prog = '~/.asdf/shims/python2'
-let g:python3_host_prog = '~/.asdf/shims/python'
-let g:ruby_host_prog = '~/.asdf/shims/ruby'
-
-"" vim-better-default
-let g:vim_better_default_persistent_undo = 1
-runtime! plugin/default.vim
-set shiftwidth=2
-set tabstop=2
-set softtabstop=2
-set wildmode=full
-
-"" EditorConfig-vim
-let g:EditorConfig_core_mode = 'external_command'
 
 "" telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
