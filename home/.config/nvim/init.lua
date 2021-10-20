@@ -1,32 +1,32 @@
 local api, cmd, fn, g = vim.api, vim.cmd, vim.fn, vim.g
 local opt, wo = vim.opt, vim.wo
-local fmt = string.format 
+local fmt = string.format
 
 ---- defaults ----
 opt.shell='fish'
 opt.mouse = 'a'
 opt.termguicolors = true
 
--- ui 
+-- ui
 opt.cursorline = true
-opt.number = true 
-opt.wrap = false 
+opt.number = true
+opt.wrap = false
 
--- tab, indent 
+-- tab, indent
 opt.expandtab = true
 opt.smarttab = true
 opt.autoindent = true
-opt.smartindent = true 
+opt.smartindent = true
 opt.shiftwidth = 2
 opt.tabstop = 2
 opt.softtabstop = 2
 
--- leader 
+-- leader
 api.nvim_set_keymap('', '<Space>', '<Nop>', { noremap = true, silent = true })
 g.mapleader = ' '
 g.maplocalleader =  ','
 
--- provider 
+-- provider
 g.loaded_python_provider = 0
 g.python3_host_prog = '~/.asdf/shims/python'
 g.loaded_perl_provider = 0
@@ -50,20 +50,37 @@ packer.startup(function()
 
 -- LSP
   use { 'neovim/nvim-lspconfig', 'williamboman/nvim-lsp-installer' }
-  use 'nvim-lua/lsp-status.nvim' 
-  use 'nvim-lua/lsp_extensions.nvim' 
-  use 'glepnir/lspsaga.nvim' 
-  use 'folke/lsp-colors.nvim' 
+  use 'nvim-lua/lsp-status.nvim'
+  use 'nvim-lua/lsp_extensions.nvim'
+  use 'glepnir/lspsaga.nvim'
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+      require("trouble").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
+  use{ "jose-elias-alvarez/null-ls.nvim",
+    config = function()
+        require("null-ls").config({})
+        require("lspconfig")["null-ls"].setup({})
+    end,
+    requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
+  }
 
   -- completion
-  use 'hrsh7th/cmp-nvim-lsp' 
-  use 'hrsh7th/cmp-buffer' 
-  use 'hrsh7th/nvim-cmp' 
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use 'hrsh7th/nvim-cmp'
 
   -- syntax
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use 'nvim-treesitter/nvim-treesitter-textobjects' 
-  use 'blackcauldron7/surround.nvim' 
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
+  use 'blackcauldron7/surround.nvim'
 
   -- snippet
   use 'L3MON4D3/LuaSnip'
@@ -73,10 +90,10 @@ packer.startup(function()
   use {
     'nvim-telescope/telescope.nvim',
     requires = { {'nvim-lua/plenary.nvim'} }
-  } 
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' } 
+  }
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-  -- color 
+  -- color
   use 'norcalli/nvim-colorizer.lua' 
 
   -- colorscheme
@@ -84,7 +101,7 @@ packer.startup(function()
 
   -- icon
 
-  -- neovim lua dev 
+  -- neovim lua dev
 
   -- tabbar
   use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
@@ -96,17 +113,16 @@ packer.startup(function()
   }
 
   -- coursorline
-  use 'yamatsum/nvim-cursorline' 
+  use 'yamatsum/nvim-cursorline'
 
-  -- editing support 
-  use 'p00f/nvim-ts-rainbow' 
-  use 'JoosepAlviste/nvim-ts-context-commentstring' 
+  -- editing support
+  use 'p00f/nvim-ts-rainbow'
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
 
-  -- formatting 
-  use 'mhartington/formatter.nvim' 
+  -- formatting
 
   -- ident
-  use 'lukas-reineke/indent-blankline.nvim' 
+  use 'lukas-reineke/indent-blankline.nvim'
 
   -- file explorer
   use {
@@ -116,17 +132,17 @@ packer.startup(function()
 
   -- git
   use {
-    'lewis6991/gitsigns.nvim', 
-    requires = { 'nvim-lua/plenary.nvim' }, 
+    'lewis6991/gitsigns.nvim',
+    requires = { 'nvim-lua/plenary.nvim' },
   }
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' }
 
   -- language support
   use {'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim'}
-  use 'gennaro-tedesco/nvim-jqx' 
+  use 'gennaro-tedesco/nvim-jqx'
 
   -- comment
-  use 'numToStr/Comment.nvim' 
+  use 'numToStr/Comment.nvim'
 
   -- keybinding
   use 'folke/which-key.nvim'
@@ -139,7 +155,7 @@ end)
 
 ---- plugin configs ----
 
---etc 
+--etc
 require('impatient')
 
 --lsp
@@ -185,7 +201,7 @@ require('impatient')
       { name = 'buffer' },
     }
   })
-  
+
   -- syntax
   require'nvim-treesitter.configs'.setup {
     ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
@@ -208,19 +224,19 @@ require('impatient')
       }
     }
   require"surround".setup {mappings_style = "sandwich"}
-  
+
   -- snippet
 
   -- fuzzy finder
   require("telescope").load_extension("flutter")
 
-  -- color 
+  -- color
   require'colorizer'.setup{}
 
   -- colorscheme
   require('onedark').setup{}
 
-  -- icon 
+  -- icon
 
   -- utility
 
@@ -241,7 +257,7 @@ require('impatient')
   }
 
   -- statusline
-  require('lualine').setup{ 
+  require('lualine').setup{
     options = { theme = 'onedark' },
     extensions = {'nvim-tree'}
   }
@@ -255,22 +271,21 @@ require('impatient')
 
   -- git
   require('gitsigns').setup{}
-  
+
   local neogit = require('neogit')
   neogit.setup{}
 
-  -- language support 
+  -- language support
   require("flutter-tools").setup{}
 
-  -- comment 
+  -- comment
   require('Comment').setup{}
 
-  -- editing support 
+  -- editing support
 
-  -- formatting 
-  require('formatter').setup{}
+  -- formatting
 
-  -- keybinding 
+  -- keybinding
   local wk = require("which-key")
   wk.setup{}
   wk.register({
@@ -283,17 +298,23 @@ require('impatient')
     ["<leader>ck"] = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     ["<leader>ch"] = { "<cmd>Telescope man_pages<cr>", "Help"},
 
-    ["<leader>v"] = { name = "+Edit"},
-    ["<leader>vf"] = { "<cmd>Format<cr>", "Format" },
+    ["<leader>x"] = { name = "+Language"},
+    ["<leader>X"] = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Problems" },
+    ["<leader>xx"] = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Problems" },
+    ["<leader>xd"] = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "Problems(doc)" },
+    ["<leader>xq"] = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix" },
+    ["<leader>xl"] = { "<cmd>TroubleToggle loclist<cr>", "Loclist" },
+    ["<leader>xf"] = { "<cmd>Format<cr>", "Format" },
+    ["<leader>xt"] = { "<cmd>TroubleToggle<cr>", "Trouble" },
 
     ["<leader>b"] = { name = "+Buffer"},
     ["<leader>B"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
     ["<leader>bb"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
-    
+
     ["<leader>r"] = { name = "+Register"},
     ["<leader>R"] = { "<cmd>Telescope registers<cr>", "Registers" },
     ["<leader>rr"] = { "<cmd>Telescope registers<cr>", "Registers" },
-    
+
     ["<leader>e"] = { name = "+Explorer"},
     ["<leader>E"] = { "<cmd>NvimTreeToggle<cr>", "Explorer"},
     ["<leader>ee"] = { "<cmd>NvimTreeToggle<cr>", "Explorer"},
@@ -307,13 +328,13 @@ require('impatient')
     ["<leader>sn"] = { "<cmd>Telescope help_tags<cr>", "Tags" },
     ["<leader>sh"] = { "<cmd>Telescope search_history<cr>", "Search History"},
     ["<leader>st"] = { "<cmd>Telescope<cr>", "Telescope"},
-    
+
     ["<leader>f"] = { name = "+File" },
     ["<leader>F"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     ["<leader>fn"] = { "<cmd>enew<cr>", "New File" },
-    
+
     ["<leader>g"] = { name = "+Git" },
     ["<leader>G"] = { "<cmd>Neogit<cr>", "Status" },
     ["<leader>gg"] = { "<cmd>Neogit<cr>", "Status" },
