@@ -23,7 +23,6 @@ set -Ua fish_user_paths "$GEM_HOME/bin"
 set -Ua fish_user_paths "$COMPOSER_HOME/vendor/bin"
 set -Ua fish_user_paths "/usr/local/share/dotnet"
 set -Ua fish_user_paths "$HOME/opt/google-cloud-sdk/bin"
-set -Ua fish_user_paths "$HOME/.fastlane/bin"     
 set -Ua fish_user_paths "$HOME/Library/Android/sdk/platform-tools/"
 
 
@@ -46,7 +45,7 @@ end
 set -x LANG "ko_KR.UTF-8"
 set -x EDITOR "/usr/local/bin/nvim"   
 set -x GOPATH "$HOME/go"    
-set -x GOROOT (asdf where golang)/go/
+set -x GOROOT (asdf where golang)/go
 set -x COMPOSER_HOME "$HOME/.composer"
 set -x GO111MODULE "on"
 set -x GEM_HOME $HOME/.gem
