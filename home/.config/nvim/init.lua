@@ -83,17 +83,11 @@ packer.startup(function()
   use 'navarasu/onedark.nvim' 
 
   -- icon
-  -- use 'kyazdani42/nvim-web-devicons' 
 
   -- neovim lua dev 
-  -- use 'nvim-lua/plenary.nvim' 
-  -- use 'nvim-lua/popup.nvim' 
 
   -- tabbar
-  use {
-    'romgrk/barbar.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'}
-  }
+  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
 
   -- statusline
   use {
@@ -218,16 +212,30 @@ require('impatient')
   require('onedark').setup{}
 
   -- icon 
-  -- require'nvim-web-devicons'.setup{}
 
   -- utility
 
   -- lua development
 
   -- tabline
+  require('bufferline').setup{
+    options = {
+      offsets = {
+        {
+          filetype = "NvimTree",
+          text = "File Explorer",
+          highlight = "Directory",
+          text_align = "left"
+        }
+      }
+    }
+  }
 
   -- statusline
-  require('lualine').setup{ options = { theme = 'onedark' } }
+  require('lualine').setup{ 
+    options = { theme = 'onedark' },
+    extensions = {'nvim-tree'}
+  }
 
   -- cursorline
 
@@ -296,14 +304,10 @@ require('impatient')
     ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     ["<leader>fn"] = { "<cmd>enew<cr>", "New File" },
-    -- ["<leader>e"] = { name = "+explorer" },
     
     ["<leader>g"] = { name = "+Git" },
     ["<leader>G"] = { "<cmd>Neogit<cr>", "Status" },
     ["<leader>gg"] = { "<cmd>Neogit<cr>", "Status" },
     ["<leader>gc"] = { "<cmd>Neogit commit<cr>", "Commit" },
   })
-
----- vim settings ----
-
 
