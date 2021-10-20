@@ -3,7 +3,6 @@ set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
 
 
-
 # PATH   
 set -U fish_user_paths
 set -Up fish_user_paths "/usr/local/sbin"
@@ -27,13 +26,13 @@ set -Ua fish_user_paths "$HOME/Library/Android/sdk/platform-tools/"
 
 
 # eval    
+source ~/.config/fish/credential.fish
 source "$HOME/.homesick/repos/homeshick/homeshick.fish"
 source (brew --prefix asdf)/asdf.fish
 # source (/opt/homebrew/bin/brew --prefix asdf)/asdf.fish
 eval (direnv hook fish)
 navi widget fish | source
 zoxide init fish | source
-source ~/.config/fish/credential.fish
 ## asdf-java
 asdf current java 2>&1 > /dev/null
 if test $status -eq 0
@@ -55,10 +54,6 @@ set -x CLOUDSDK_PYTHON_SITEPACKAGES "1"
 set -gx NO_PROXY localhost,127.0.0.1
 
 
-# iterm
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
-
 # alias
 alias ls="lsd"
 alias l="ls -l"
@@ -67,3 +62,12 @@ alias lla="ls -la"
 alias lt="ls --tree"
 alias cat='bat'
 alias cd="z"
+
+
+# iterm
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
+
+# starship
+starship init fish | source
+
