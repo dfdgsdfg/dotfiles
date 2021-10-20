@@ -49,7 +49,7 @@ packer.startup(function()
   use 'lewis6991/impatient.nvim'
 
 -- LSP
-  use 'neovim/nvim-lspconfig' 
+  use { 'neovim/nvim-lspconfig', 'williamboman/nvim-lsp-installer' }
   use 'nvim-lua/lsp-status.nvim' 
   use 'nvim-lua/lsp_extensions.nvim' 
   use 'glepnir/lspsaga.nvim' 
@@ -144,12 +144,21 @@ require('impatient')
 
 --lsp
   local lspconfig = require'lspconfig'
-  lspconfig.tsserver.setup{
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  }
-  lspconfig.dartls.setup{
-    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-  }
+  local lsp_installer = require("nvim-lsp-installer")
+
+  lsp_installer.on_server_ready(function(server)
+      local opts = {}
+      opts.capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+      -- (optional) Customize the options passed to the server
+      -- if server.name == "tsserver" then
+      --     opts.root_dir = function() ... end
+      -- end
+
+      -- This setup() function is exactly the same as lspconfig's setup function (:help lspconfig-quickstart)
+      server:setup(opts)
+      vim.cmd [[ do User LspAttachBuffers ]]
+  end)
 
   local saga = require'lspsaga'
   saga.init_lsp_saga()
