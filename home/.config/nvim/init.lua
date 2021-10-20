@@ -209,6 +209,7 @@ require('impatient')
   -- snippet
 
   -- fuzzy finder
+  require("telescope").load_extension("flutter")
 
   -- color 
   require'colorizer'.setup{}
@@ -256,17 +257,51 @@ require('impatient')
   local wk = require("which-key")
   wk.setup{}
   wk.register({
-    ["<leader>c"] = { name = "+color" },
-    ["<leader>f"] = { name = "+file" },
+    -- ["<leader>c"] = { name = "+Color" },
+
+    ["<leader>c"] = { name = "+Command"},
+    ["<leader>C"] = { "<cmd>Telescope commands<cr>", "Commands" },
+    ["<leader>cc"] = { "<cmd>Telescope commands<cr>", "Commands" },
+    ["<leader>ct"] = { "<cmd>Telescope command_history<cr>", "Command History"},
+    ["<leader>ck"] = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+    ["<leader>ch"] = { "<cmd>Telescope man_pages<cr>", "Help"},
+
+    ["<leader>v"] = { name = "+Edit"},
+    ["<leader>vf"] = { "<cmd>Format<cr>", "Format" },
+
+    ["<leader>b"] = { name = "+Buffer"},
+    ["<leader>B"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    ["<leader>bb"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+    
+    ["<leader>r"] = { name = "+Register"},
+    ["<leader>R"] = { "<cmd>Telescope registers<cr>", "Registers" },
+    ["<leader>rr"] = { "<cmd>Telescope registers<cr>", "Registers" },
+    
+    ["<leader>e"] = { name = "+Explorer"},
+    ["<leader>E"] = { "<cmd>NvimTreeToggle<cr>", "Explorer"},
+    ["<leader>ee"] = { "<cmd>NvimTreeToggle<cr>", "Explorer"},
+    ["<leader>eE"] = { "<cmd>Telescope file_browser<cr>", "Explorer(search)" },
+    ["<leader>ef"] = { "<cmd>FlutterOutlineToggle<cr>", "Flutter"},
+
+    ["<leader>s"] = { name = "+Search"},
+    ["<leader>S"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Grep current buffer" },
+    ["<leader>ss"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Grep current buffer" },
+    ["<leader>sg"] = { "<cmd>Telescope live_grep<cr>", "Grep" },
+    ["<leader>sn"] = { "<cmd>Telescope help_tags<cr>", "Tags" },
+    ["<leader>sh"] = { "<cmd>Telescope search_history<cr>", "Search History"},
+    ["<leader>st"] = { "<cmd>Telescope<cr>", "Telescope"},
+    
+    ["<leader>f"] = { name = "+File" },
+    ["<leader>F"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<leader>ff"] = { "<cmd>Telescope find_files<cr>", "Find File" },
     ["<leader>fr"] = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-    ["<leader>fg"] = { "<cmd>Telescope live_grep<cr>", "Grep" },
-    ["<leader>fb"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
-    ["<leader>fn"] = { "<cmd>Telescope help_tags<cr>", "Tags" },
     ["<leader>fn"] = { "<cmd>enew<cr>", "New File" },
     -- ["<leader>e"] = { name = "+explorer" },
-    ["<leader>e"] = { "<cmd>NvimTreeToggle<cr>", "File Explorer"},
-    ["<leader>t"] = { "<cmd>Telescope<cr>", "Telescope"},
+    
+    ["<leader>g"] = { name = "+Git" },
+    ["<leader>G"] = { "<cmd>Neogit<cr>", "Status" },
+    ["<leader>gg"] = { "<cmd>Neogit<cr>", "Status" },
+    ["<leader>gc"] = { "<cmd>Neogit commit<cr>", "Commit" },
   })
 
 ---- vim settings ----
