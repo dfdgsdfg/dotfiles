@@ -42,6 +42,8 @@ end
 ---- plugins ----
 
 local packer = require'packer'
+local use = packer.use
+
 packer.startup(function()
   use 'wbthomason/packer.nvim'
 
@@ -88,6 +90,9 @@ packer.startup(function()
   use 'nvim-treesitter/nvim-treesitter-textobjects'
   use 'blackcauldron7/surround.nvim'
 
+  -- terminal
+  use {"akinsho/toggleterm.nvim"}
+
   -- snippet
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
@@ -100,10 +105,10 @@ packer.startup(function()
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- color
-  use 'norcalli/nvim-colorizer.lua' 
+  use 'norcalli/nvim-colorizer.lua'
 
   -- colorscheme
-  use 'navarasu/onedark.nvim' 
+  use 'navarasu/onedark.nvim'
 
   -- icon
 
@@ -231,6 +236,9 @@ require('impatient')
     }
   require"surround".setup {mappings_style = "sandwich"}
 
+  -- terminal
+  require("toggleterm").setup{}
+
   -- snippet
 
   -- fuzzy finder
@@ -304,14 +312,22 @@ require('impatient')
     ["<leader>ck"] = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     ["<leader>ch"] = { "<cmd>Telescope man_pages<cr>", "Help"},
 
+    ["<leader>w"] = { name = "+Workspace"},
+    ["<localleader>wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Format" },
+    ["<localleader>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Format" },
+    ["<localleader>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "Format" },
+    
     ["<leader>x"] = { name = "+Language"},
+    ["<localleader>x"] = { name = "+Language"},
     ["<leader>X"] = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Problems" },
     ["<leader>xx"] = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Problems" },
-    ["<leader>xd"] = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "Problems(doc)" },
+    ["<localleader>X"] = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "Problems" },
+    ["<localleader>xx"] = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "Problems" },
     ["<leader>xq"] = { "<cmd>TroubleToggle quickfix<cr>", "Quickfix" },
     ["<leader>xl"] = { "<cmd>TroubleToggle loclist<cr>", "Loclist" },
-    ["<leader>xf"] = { "<cmd>Format<cr>", "Format" },
     ["<leader>xt"] = { "<cmd>TroubleToggle<cr>", "Trouble" },
+    ["<localleader>xf"] = { "<cmd>lua vim.lsp.buf.formatting()<CR>", "Format" },
+    ["<localleader>xF"] = { "<cmd>lua vim.lsp.buf.range_formatting()<CR>", "Range Format" },
 
     ["<leader>b"] = { name = "+Buffer"},
     ["<leader>B"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
@@ -328,9 +344,11 @@ require('impatient')
     ["<leader>ef"] = { "<cmd>FlutterOutlineToggle<cr>", "Flutter"},
 
     ["<leader>s"] = { name = "+Search"},
-    ["<leader>S"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Grep current buffer" },
-    ["<leader>ss"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Grep current buffer" },
-    ["<leader>sg"] = { "<cmd>Telescope live_grep<cr>", "Grep" },
+    ["<localleader>s"] = { name = "+Search"},
+    ["<leader>S"] = { "<cmd>Telescope live_grep<cr>", "Grep" },
+    ["<leader>ss"] = { "<cmd>Telescope live_grep<cr>", "Grep" },
+    ["<localleader>S"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Grep" },
+    ["<localleader>ss"] = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Grep" },
     ["<leader>sn"] = { "<cmd>Telescope help_tags<cr>", "Tags" },
     ["<leader>sh"] = { "<cmd>Telescope search_history<cr>", "Search History"},
     ["<leader>st"] = { "<cmd>Telescope<cr>", "Telescope"},
