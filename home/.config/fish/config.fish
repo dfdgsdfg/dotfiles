@@ -47,7 +47,7 @@ set -x GOPATH "$HOME/go"
 set -x GOROOT (asdf where golang)/go
 set -x COMPOSER_HOME "$HOME/.composer"
 set -x GO111MODULE "on"
-set -x GEM_HOME $HOME/.gem
+# set -x GEM_HOME $HOME/.gem
 set -x CLOUDSDK_PYTHON_SITEPACKAGES "1"
 # flutter
 # https://github.com/flutter/flutter/issues/25112
