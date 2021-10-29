@@ -18,7 +18,6 @@ set -Ua fish_user_paths "~/.pub-cache/bin"
 set -Ua fish_user_paths "~/flutter/bin"
 set -Ua fish_user_paths "$GOROOT/bin"
 set -Ua fish_user_paths "$GOPATH/bin"
-# set -Ua fish_user_paths "$GEM_HOME/bin"
 set -Ua fish_user_paths "$COMPOSER_HOME/vendor/bin"
 set -Ua fish_user_paths "/usr/local/share/dotnet"
 set -Ua fish_user_paths "~/opt/google-cloud-sdk/bin"
@@ -49,7 +48,6 @@ set -x GOPATH ~/go
 set -x GOROOT (asdf where golang)/go
 set -x COMPOSER_HOME ~/.composer
 set -x GO111MODULE "on"
-# set -x GEM_HOME $HOME/.gem
 set -x CLOUDSDK_PYTHON_SITEPACKAGES "1"
 # flutter
 # https://github.com/flutter/flutter/issues/25112
