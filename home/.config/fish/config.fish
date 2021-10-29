@@ -9,26 +9,28 @@ set -Up fish_user_paths "/usr/local/sbin"
 set -Up fish_user_paths "/usr/local/bin"
 set -Up fish_user_paths "/opt/homebrew/sbin"
 set -Up fish_user_paths "/opt/homebrew/bin"
-set -Up fish_user_paths "$HOME/.local/bin"
-set -Up fish_user_paths "$HOME/bin"
-set -Up fish_user_paths "$HOME/.asdf/shims"
-set -Ua fish_user_paths "$HOME/.cabal/bin"
-set -Ua fish_user_paths "$HOME/.cargo/bin"
-set -Ua fish_user_paths "$HOME/.pub-cache/bin"
-set -Ua fish_user_paths "$HOME/flutter/bin"
+set -Up fish_user_paths "~/.local/bin"
+set -Up fish_user_paths "~/bin"
+set -Up fish_user_paths "~/.asdf/shims"
+set -Ua fish_user_paths "~/.cabal/bin"
+set -Ua fish_user_paths "~/.cargo/bin"
+set -Ua fish_user_paths "~/.pub-cache/bin"
+set -Ua fish_user_paths "~/flutter/bin"
 set -Ua fish_user_paths "$GOROOT/bin"
 set -Ua fish_user_paths "$GOPATH/bin"
 set -Ua fish_user_paths "$GEM_HOME/bin"
 set -Ua fish_user_paths "$COMPOSER_HOME/vendor/bin"
 set -Ua fish_user_paths "/usr/local/share/dotnet"
-set -Ua fish_user_paths "$HOME/opt/google-cloud-sdk/bin"
-set -Ua fish_user_paths "$HOME/Library/Android/sdk/platform-tools/"
+set -Ua fish_user_paths "~/opt/google-cloud-sdk/bin"
+set -Ua fish_user_paths "~/Library/Android/sdk/platform-tools/"
 
 
 # eval    
 source ~/.config/fish/credential.fish
-source "$HOME/.homesick/repos/homeshick/homeshick.fish"
-source (brew --prefix asdf)/asdf.fish
+source ~/.homesick/repos/homeshick/homeshick.fish
+source /usr/local/opt/asdf/libexec/asdf.fish
+# source (brew --prefix asdf)/asdf.fish
+# source /opt/homebrew/opt/asdf/libexec/asdf.fish
 # source (/opt/homebrew/bin/brew --prefix asdf)/asdf.fish
 eval (direnv hook fish)
 navi widget fish | source
@@ -42,10 +44,10 @@ end
 
 # ENV   
 set -x LANG "ko_KR.UTF-8"
-set -x EDITOR "/usr/local/bin/nvim"   
-set -x GOPATH "$HOME/go"    
+set -x EDITOR /usr/local/bin/nvim
+set -x GOPATH ~/go    
 set -x GOROOT (asdf where golang)/go
-set -x COMPOSER_HOME "$HOME/.composer"
+set -x COMPOSER_HOME ~/.composer
 set -x GO111MODULE "on"
 # set -x GEM_HOME $HOME/.gem
 set -x CLOUDSDK_PYTHON_SITEPACKAGES "1"
@@ -65,7 +67,7 @@ alias cd="z"
 
 
 # iterm
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+test -e ~/.iterm2_shell_integration.fish ; and source ~/.iterm2_shell_integration.fish
 
 
 # starship
