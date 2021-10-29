@@ -5,23 +5,23 @@ set fisher_config ~/.config/fisherman
 
 # PATH   
 set -U fish_user_paths
-set -Up fish_user_paths "/usr/local/sbin"
-set -Up fish_user_paths "/usr/local/bin"
-set -Up fish_user_paths "/opt/homebrew/sbin"
-set -Up fish_user_paths "/opt/homebrew/bin"
-set -Up fish_user_paths "~/.local/bin"
-set -Up fish_user_paths "~/bin"
-set -Up fish_user_paths "~/.asdf/shims"
-set -Ua fish_user_paths "~/.cabal/bin"
-set -Ua fish_user_paths "~/.cargo/bin"
-set -Ua fish_user_paths "~/.pub-cache/bin"
-set -Ua fish_user_paths "~/flutter/bin"
-set -Ua fish_user_paths "$GOROOT/bin"
-set -Ua fish_user_paths "$GOPATH/bin"
-set -Ua fish_user_paths "$COMPOSER_HOME/vendor/bin"
-set -Ua fish_user_paths "/usr/local/share/dotnet"
-set -Ua fish_user_paths "~/opt/google-cloud-sdk/bin"
-set -Ua fish_user_paths "~/Library/Android/sdk/platform-tools/"
+set -Up fish_user_paths /usr/local/sbin
+set -Up fish_user_paths /usr/local/bin
+set -Up fish_user_paths /opt/homebrew/sbin
+set -Up fish_user_paths /opt/homebrew/bin
+set -Up fish_user_paths ~/.local/bin
+set -Up fish_user_paths ~/bin
+set -Up fish_user_paths ~/.asdf/shims
+set -Ua fish_user_paths ~/.cabal/bin
+set -Ua fish_user_paths ~/.cargo/bin
+set -Ua fish_user_paths ~/.pub-cache/bin
+set -Ua fish_user_paths ~/flutter/bin
+set -Ua fish_user_paths $GOROOT/bin
+set -Ua fish_user_paths $GOPATH/bin
+set -Ua fish_user_paths $COMPOSER_HOME/vendor/bin
+set -Ua fish_user_paths /usr/local/share/dotnet
+set -Ua fish_user_paths ~/opt/google-cloud-sdk/bin
+set -Ua fish_user_paths ~/Library/Android/sdk/platform-tools
 
 
 # eval    
@@ -60,7 +60,7 @@ alias l="ls -l"
 alias la="ls -a"
 alias lla="ls -la"
 alias lt="ls --tree"
-alias cat='bat'
+alias cat="bat"
 alias cd="z"
 
 
