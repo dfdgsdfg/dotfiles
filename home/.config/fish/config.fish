@@ -9,25 +9,19 @@ set -Up fish_user_paths /usr/local/sbin
 set -Up fish_user_paths /usr/local/bin
 set -Up fish_user_paths /opt/homebrew/sbin
 set -Up fish_user_paths /opt/homebrew/bin
+set -Up fish_user_paths ~/opt/bin
 set -Up fish_user_paths ~/.local/bin
 set -Up fish_user_paths ~/bin
-set -Up fish_user_paths ~/.asdf/shims
-set -Ua fish_user_paths ~/.cabal/bin
-set -Ua fish_user_paths ~/.cargo/bin
+set -Ua fish_user_paths ~/opt/google-cloud-sdk/bin
 set -Ua fish_user_paths ~/.pub-cache/bin
 set -Ua fish_user_paths ~/flutter/bin
-set -Ua fish_user_paths $COMPOSER_HOME/vendor/bin
-set -Ua fish_user_paths /usr/local/share/dotnet
-set -Ua fish_user_paths ~/opt/google-cloud-sdk/bin
 set -Ua fish_user_paths ~/Library/Android/sdk/platform-tools
 
 
 # ENV   
 set -x LANG "ko_KR.UTF-8"
 set -x EDITOR /usr/local/bin/nvim
-set -x COMPOSER_HOME ~/.composer
 set -x GO111MODULE "on"
-set -x CLOUDSDK_PYTHON_SITEPACKAGES "1"
 # flutter
 # https://github.com/flutter/flutter/issues/25112
 set -gx NO_PROXY localhost,127.0.0.1
