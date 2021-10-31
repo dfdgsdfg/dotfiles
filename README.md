@@ -9,28 +9,24 @@
 
 2. Install Homebrew
   - [Homebrew](http://brew.sh/)
+```bash
+homebrew install fish sk fzf asdf navi zoxide lsd starship fd neovim jq cat lazygit mosh trash
+homebrew install font-meslo-nerd-font
+```
 
-3. Install Fish Shell
-  - [Fish Shell](http://fishshell.com/)
-    - [Fisherman](http://fisherman.sh)
+3. Fish Shell Config
+  - [Fisherman](http://fisherman.sh)
 
 4. Install Homeshick
   - [Homeshick](https://github.com/andsens/homeshick)
 
-5. Install Packages
-  - [Git](http://git-scm.com/)
-  - [Tig](https://github.com/jonas/tig)
-  - [Ranger](https://github.com/hut/ranger)
-  - [w3m](http://w3m.sourceforge.net/)
-  - [Weechat](http://weechat.org/)
-  - [Vim](http://www.vim.org/), [NeoVim](https://neovim.io/)
-    - [Vim-plug](https://github.com/oh-my-fish/oh-my-fish)
-    - [Power Line Font](https://github.com/Lokaltog/powerline-fonts)
-    - [nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
-  - [Tmux](https://github.com/ThomasAdam/tmux)
-    - [tpm](https://github.com/tmux-plugins/tpm)
-  - [editorconfig](https://github.com/editorconfig/editorconfig-core-c)
-
-6. Install Dotfiles
+5. Install Dotfiles
   - `homeshick clone dfdgsdfg/dotfiles`
 
+6. Neovim Config
+  - [Packer](https://github.com/wbthomason/packer.nvim)
+```bash
+npm i -g neovim
+pip install pynvim
+gem install neovim
+```

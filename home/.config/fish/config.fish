@@ -55,5 +55,6 @@ alias lla="ls -la"
 alias lt="ls --tree"
 alias cat="bat"
 alias cd="z"
+alias rm="trash"
 alias gcloud="env ASDF_PYTHON_VERSION=3.7.12 gcloud"
 
