@@ -12,8 +12,8 @@
 - [Homebrew](http://brew.sh/)
 
 ```bash
-homebrew install fish sk fzf asdf navi zoxide lsd starship fd neovim jq cat lazygit mosh trash tmux
-homebrew install font-meslo-nerd-font
+brew install fish sk fzf asdf navi zoxide lsd starship fd neovim jq bat lazygit mosh trash tmux
+brew install font-meslo-nerd-font
 ```
 
 
