@@ -17,7 +17,7 @@ homebrew install font-meslo-nerd-font
 ```
 
 
-### Install Fisher
+### Install Fisherman
 - [Fisherman](http://fisherman.sh)
 
 
@@ -30,8 +30,10 @@ homebrew install font-meslo-nerd-font
 
 
 ### Install Dotfiles
-- `homeshick clone dfdgsdfg/dotfiles`
 
+```bash
+homeshick clone dfdgsdfg/dotfiles
+```
 
 ### Config Neovim
 - [Packer](https://github.com/wbthomason/packer.nvim)
