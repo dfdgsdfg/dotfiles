@@ -79,6 +79,7 @@ packer.startup(function()
     end,
     requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
   }
+  use 'folke/lsp-colors.nvim'
 
   -- completion
   use 'hrsh7th/cmp-nvim-lsp'
