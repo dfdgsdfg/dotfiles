@@ -22,6 +22,7 @@ set -Ua fish_user_paths ~/Library/Android/sdk/platform-tools
 set -x LANG "ko_KR.UTF-8"
 set -x EDITOR /usr/local/bin/nvim
 set -x GO111MODULE "on"
+set -x CLOUDSDK_PYTHON_SITEPACKAGES 1
 # flutter
 # https://github.com/flutter/flutter/issues/25112
 set -gx NO_PROXY localhost,127.0.0.1
@@ -41,7 +42,7 @@ source /usr/local/opt/asdf/libexec/asdf.fish
 # source (brew --prefix asdf)/asdf.fish
 # source /opt/homebrew/opt/asdf/libexec/asdf.fish
 # source (/opt/homebrew/bin/brew --prefix asdf)/asdf.fish
-eval (direnv hook fish)
+direnv hook fish | source
 ## asdf-java
 asdf current java 2>&1 > /dev/null
 . ~/.asdf/plugins/java/set-java-home.fish
