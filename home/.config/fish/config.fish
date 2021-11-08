@@ -22,6 +22,7 @@ set -Ua fish_user_paths ~/Library/Android/sdk/platform-tools
 set -x LANG "ko_KR.UTF-8"
 set -x EDITOR /usr/local/bin/nvim
 set -x GO111MODULE "on"
+set -x CLOUDSDK_PYTHON_SITEPACKAGES 1
 # flutter
 # https://github.com/flutter/flutter/issues/25112
 set -gx NO_PROXY localhost,127.0.0.1
