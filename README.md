@@ -12,7 +12,7 @@
 - [Homebrew](http://brew.sh/)
 
 ```bash
-brew install fish sk rg fzf asdf navi zoxide lsd starship fd jq bat lazygit mosh trash tmux procs sd dust delta bandwhich nushell
+brew install fish sk rg fzf asdf navi zoxide lsd starship fd jq bat lazygit mosh trash tmux procs sd dust grex git-delta bandwhich nushell
 
 brew tap neovim/neovim
 brew install neovim
