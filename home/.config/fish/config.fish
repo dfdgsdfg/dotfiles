@@ -41,7 +41,7 @@ source /usr/local/opt/asdf/libexec/asdf.fish
 # source (brew --prefix asdf)/asdf.fish
 # source /opt/homebrew/opt/asdf/libexec/asdf.fish
 # source (/opt/homebrew/bin/brew --prefix asdf)/asdf.fish
-eval (direnv hook fish)
+direnv hook fish | source
 ## asdf-java
 asdf current java 2>&1 > /dev/null
 . ~/.asdf/plugins/java/set-java-home.fish
