@@ -44,9 +44,7 @@ source /usr/local/opt/asdf/libexec/asdf.fish
 # source (/opt/homebrew/bin/brew --prefix asdf)/asdf.fish
 direnv hook fish | source
 ## asdf-java
-asdf current java 2>&1 > /dev/null
 . ~/.asdf/plugins/java/set-java-home.fish
-
 
 # alias
 alias ls="lsd"
