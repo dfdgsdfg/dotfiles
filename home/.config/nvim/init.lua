@@ -313,11 +313,11 @@ require('impatient')
     ["<leader>ck"] = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     ["<leader>ch"] = { "<cmd>Telescope man_pages<cr>", "Help"},
 
-    ["<leader>w"] = { name = "+Workspace"},
+    ["<localleader>w"] = { name = "+Workspace"},
     ["<localleader>wa"] = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", "Format" },
     ["<localleader>wr"] = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", "Format" },
     ["<localleader>wl"] = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", "Format" },
-    
+
     ["<leader>x"] = { name = "+Language"},
     ["<localleader>x"] = { name = "+Language"},
     ["<leader>X"] = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Problems" },
@@ -364,5 +364,10 @@ require('impatient')
     ["<leader>G"] = { "<cmd>Neogit<cr>", "Status" },
     ["<leader>gg"] = { "<cmd>Neogit<cr>", "Status" },
     ["<leader>gc"] = { "<cmd>Neogit commit<cr>", "Commit" },
+
+    ["<leader>t"] = { name = "+Terminal" },
+    ["<leader>T"] = { "<cmd>ToggleTerm<cr>", "Terminal" },
+    ["<leader>tt"] = { "<cmd>ToggleTerm<cr>", "Terminal" },
+    ["<leader>tb"] = { "<cmd>terminal<cr>", "Terminal Buffer" },
   })
 
