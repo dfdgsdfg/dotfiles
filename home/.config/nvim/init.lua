@@ -89,7 +89,7 @@ packer.startup(function()
   -- syntax
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use 'blackcauldron7/surround.nvim'
+  use 'blackCauldron7/surround.nvim'
 
   -- terminal
   use {"akinsho/toggleterm.nvim"}
