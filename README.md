@@ -12,7 +12,7 @@
 - [Homebrew](http://brew.sh/)
 
 ```bash
-brew install fish sk rg fzf asdf navi zoxide lsd starship fd jq bat lazygit mosh trash tmux procs sd dust grex git-delta bandwhich nushell
+brew install fish sk rg fzf asdf navi zoxide lsd starship fd jq bat lazygit mosh trash zellij procs sd dust grex git-delta bandwhich nushell
 
 brew tap neovim/neovim
 brew install neovim
@@ -27,10 +27,6 @@ brew install font-meslo-nerd-font
 
 ### Install Fisherman
 - [Fisherman](http://fisherman.sh)
-
-
-### Install TPM
-- [TPM](https://github.com/tmux-plugins/tpm)
 
 
 ### Install Homeshick
