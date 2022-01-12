@@ -68,14 +68,13 @@ packer.startup(function()
   }
   use{ "jose-elias-alvarez/null-ls.nvim",
     config = function()
-        require("null-ls").config{
+        require("null-ls").setup({
           sources = {
             require("null-ls").builtins.formatting.fish_indent,
             require("null-ls").builtins.formatting.dart_format,
             require("null-ls").builtins.formatting.lua_format
           }
-        }
-        require("lspconfig")["null-ls"].setup{}
+        })
     end,
     requires = {"nvim-lua/plenary.nvim", "neovim/nvim-lspconfig"}
   }

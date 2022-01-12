@@ -26,6 +26,8 @@ set -x CLOUDSDK_PYTHON_SITEPACKAGES 1
 # flutter
 # https://github.com/flutter/flutter/issues/25112
 set -gx NO_PROXY localhost,127.0.0.1
+# https://stackoverflow.com/questions/54441093/how-to-increase-eslint-memory-to-avoid-javascript-heap-out-of-memory
+set -x NODE_OPTIONS "--max-old-space-size=8096"
 
 
 # eval    
@@ -42,7 +44,7 @@ source /usr/local/opt/asdf/libexec/asdf.fish
 # source (brew --prefix asdf)/asdf.fish
 # source /opt/homebrew/opt/asdf/libexec/asdf.fish
 # source (/opt/homebrew/bin/brew --prefix asdf)/asdf.fish
-direnv hook fish | source
+# direnv hook fish | source
 ## asdf-java
 . ~/.asdf/plugins/java/set-java-home.fish
 
