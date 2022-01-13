@@ -248,7 +248,7 @@ require('impatient')
   require'colorizer'.setup{}
 
   -- colorscheme
-  require('onedark').setup{}
+  require('onedark').load()
 
   -- icon
 
