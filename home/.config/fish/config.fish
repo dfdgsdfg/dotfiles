@@ -3,6 +3,15 @@ set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
 
 
+# Homebrew
+switch (sysctl -n machdep.cpu.brand_string)
+  case '*Apple*'
+    eval (/opt/homebrew/bin/brew shellenv)
+  case '*'
+    eval (/usr/local/bin/brew shellenv)
+end
+
+
 # PATH   
 set -U fish_user_paths
 set -Up fish_user_paths /usr/local/sbin
@@ -40,13 +49,12 @@ starship init fish | source
 
 
 # asdf
-source /usr/local/opt/asdf/libexec/asdf.fish
-# source (brew --prefix asdf)/asdf.fish
-# source /opt/homebrew/opt/asdf/libexec/asdf.fish
-# source (/opt/homebrew/bin/brew --prefix asdf)/asdf.fish
+source (brew --prefix asdf)/libexec/asdf.fish
+## asdf-direnv
 # direnv hook fish | source
 ## asdf-java
-. ~/.asdf/plugins/java/set-java-home.fish
+source ~/.asdf/plugins/java/set-java-home.fish
+
 
 # alias
 alias ls="lsd"
@@ -63,3 +71,4 @@ alias top="ytop"
 alias diff="delta"
 alias network="bandwhich"
 alias gcloud="env ASDF_PYTHON_VERSION=3.7.12 gcloud"
+

@@ -23,4 +23,7 @@
     hunk-header-style = file line-number syntax
 
 [alias]
-    root = rev-parse --show-toplevel
+  root = rev-parse --show-toplevel
+
+[include]
+  path = config-user
