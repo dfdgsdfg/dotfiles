@@ -4,3 +4,5 @@ then
 else
   eval "$(/usr/local/bin/brew shellenv)"
 fi
+
+source "$(brew --prefix asdf)/libexec/asdf.sh"

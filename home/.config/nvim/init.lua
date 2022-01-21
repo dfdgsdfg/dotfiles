@@ -70,9 +70,9 @@ packer.startup(function()
     config = function()
         require("null-ls").setup({
           sources = {
-            require("null-ls").builtins.formatting.fish_indent,
+            -- require("null-ls").builtins.formatting.fish_indent,
             require("null-ls").builtins.formatting.dart_format,
-            require("null-ls").builtins.formatting.lua_format
+            -- require("null-ls").builtins.formatting.lua_format
           }
         })
     end,
