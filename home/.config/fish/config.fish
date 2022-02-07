@@ -29,7 +29,7 @@ set -Ua fish_user_paths ~/Library/Android/sdk/platform-tools
 
 # ENV   
 set -x LANG "ko_KR.UTF-8"
-set -x EDITOR /usr/local/bin/nvim
+set -x EDITOR nvim
 set -x GO111MODULE "on"
 set -x CLOUDSDK_PYTHON_SITEPACKAGES 1
 # flutter
