@@ -70,5 +70,5 @@ alias du="dust"
 alias top="ytop"
 alias diff="delta"
 alias network="bandwhich"
-alias gcloud="env ASDF_PYTHON_VERSION=3.7.12 gcloud"
+alias gcloud="env ASDF_PYTHON_VERSION=3.10.2 gcloud"
 
