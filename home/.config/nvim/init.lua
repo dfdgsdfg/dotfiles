@@ -48,6 +48,7 @@ packer.startup(function()
   use 'wbthomason/packer.nvim'
 
 -- etc
+  use 'echasnovski/mini.nvim' 
   use 'lewis6991/impatient.nvim'
 
 -- LSP
@@ -88,7 +89,6 @@ packer.startup(function()
   -- syntax
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use 'blackCauldron7/surround.nvim'
 
   -- terminal
   use {"akinsho/toggleterm.nvim"}
@@ -167,6 +167,7 @@ end)
 ---- plugin configs ----
 
 --etc
+require('mini.surround').setup()
 require('impatient')
 
 --lsp
@@ -234,7 +235,6 @@ require('impatient')
         extended_mode = true,
       }
     }
-  require"surround".setup {mappings_style = "sandwich"}
 
   -- terminal
   require("toggleterm").setup{}
