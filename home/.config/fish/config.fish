@@ -38,7 +38,7 @@ set -gx NO_PROXY localhost,127.0.0.1
 # https://stackoverflow.com/questions/54441093/how-to-increase-eslint-memory-to-avoid-javascript-heap-out-of-memory
 set -x NODE_OPTIONS "--max-old-space-size=8096"
 # https://stackoverflow.com/questions/71320584/flutter-build-ios-got-error-requested-but-did-not-find-extension-point-with-ide
-set -x SDKROOT=(xcrun -sdk macosx --show-sdk-path)
+set -x SDKROOT (xcrun -sdk macosx --show-sdk-path)
 
 # eval    
 test -e ~/.iterm2_shell_integration.fish ; and source ~/.iterm2_shell_integration.fish
