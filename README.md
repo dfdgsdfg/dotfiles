@@ -21,7 +21,7 @@ brew tap cjbassi/ytop
 brew install ytop
 
 brew tap homebrew/cask-fonts 
-brew install font-meslo-nerd-font
+brew install font-meslo-lg-nerd-font
 ```
 
 
