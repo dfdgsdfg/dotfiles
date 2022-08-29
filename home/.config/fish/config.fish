@@ -32,6 +32,8 @@ set -x LANG "ko_KR.UTF-8"
 set -x EDITOR nvim
 set -x GO111MODULE "on"
 set -x CLOUDSDK_PYTHON_SITEPACKAGES 1
+# https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+set -x USE_GKE_GCLOUD_AUTH_PLUGIN True
 # flutter
 # https://github.com/flutter/flutter/issues/25112
 set -gx NO_PROXY localhost,127.0.0.1
