@@ -39,6 +39,7 @@ brew install\
   git-delta\
   bandwhich\
   nushell\
+  atuin\
   chezmoi
 
 brew tap neovim/neovim
