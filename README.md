@@ -59,7 +59,7 @@ fisher install danhper/fish-ssh-agent
 ```
 
 
-### Install Dotfiles
+### Install Dotfiles with [chezmoi](https://www.chezmoi.io)
 
 ```bash
 chezmoi init --apply dfdgsdfg
@@ -68,8 +68,14 @@ chezmoi init --apply dfdgsdfg
 
 ### Config [asdf](https://asdf-vm.com)
 
+```bash
+asdf plugin add python
+asdf install python miniconda3-latest
+asdf global python miniconda3-latest
+```
 
-### Config Neovim
+
+### Config [Neovim](https://neovim.io)
 - [Packer](https://github.com/wbthomason/packer.nvim)
 
 ```bash
