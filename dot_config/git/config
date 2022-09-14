@@ -27,5 +27,6 @@
 
 [include]
   path = config-user
+
 [pull]
 	rebase = false

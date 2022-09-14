@@ -51,6 +51,14 @@ brew tap homebrew/cask-fonts
 brew install font-meslolg-nerd-font
 ```
 
+### Config [fish shell](https://fishshell.com)
+- [change default shell to fish](https://fishshell.com/docs/3.0/tutorial.html#tut_switching_to_fish)
+
+```bash
+echo /usr/local/bin/fish | sudo tee -a /etc/shells
+chsh -s /usr/local/bin/fish
+```
+
 
 ### Install [Fisher](https://github.com/jorgebucaran/fisher)
 
@@ -83,6 +91,7 @@ npm i -g neovim
 pip install pynvim
 gem install neovim
 ```
+
 
 ### Install Apps
 - Bitwarden
