@@ -42,6 +42,7 @@ set -x NODE_OPTIONS "--max-old-space-size=8096"
 # https://stackoverflow.com/questions/71320584/flutter-build-ios-got-error-requested-but-did-not-find-extension-point-with-ide
 # set -x SDKROOT (xcrun -sdk macosx --show-sdk-path)
 
+
 # eval    
 test -e ~/.iterm2_shell_integration.fish ; and source ~/.iterm2_shell_integration.fish
 source ~/.config/fish/credential.fish
@@ -49,6 +50,7 @@ source ~/.homesick/repos/homeshick/homeshick.fish
 navi widget fish | source
 zoxide init fish | source
 starship init fish | source
+atuin init fish | source
 
 
 # asdf
