@@ -1,3 +1,8 @@
+{{- $installsshkey := promptBoolOnce . "installsshkey" "Do you want to install default ssh key(yse, no)" -}}
+
+[data]
+    installsshkey = {{- $installsshkey }}
+
 encryption = "age"
 [age]
     identity = "~/key.txt"
