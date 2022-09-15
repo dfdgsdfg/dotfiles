@@ -11,5 +11,5 @@ key.txt.age
 {{ end }}
 
 {{ if eq .chezmoi.os "windows" }}
-  .chezmoiscripts
+  .chezmoiscripts/
 {{ end }}
