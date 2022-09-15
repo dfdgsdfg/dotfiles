@@ -15,7 +15,7 @@
 
 ```bash
 brew install\
- fish\ 
+ fish\
  sk\
  rg\
  fzf\
@@ -72,7 +72,7 @@ fisher install danhper/fish-ssh-agent
 ### Install Dotfiles with [chezmoi](https://www.chezmoi.io)
 
 ```bash
-chezmoi init --apply dfdgsdfg
+chezmoi init --ssh --apply dfdgsdfg
 ```
 
 
