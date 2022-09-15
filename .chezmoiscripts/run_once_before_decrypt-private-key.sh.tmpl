@@ -1,7 +1,3 @@
-{{- if eq .chezmoi.os "windows" -}}
-  exit
-{{- end -}}
-
 #!/bin/sh
 
 if [ ! -f "${HOME}/key.txt" ]; then

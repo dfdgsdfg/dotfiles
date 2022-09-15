@@ -9,3 +9,7 @@ key.txt.age
   .ssh/id_rsa.pub.pem
   .ssh/.config.d/
 {{ end }}
+
+{{ if eq .chezmoi.os "windows" }}
+  .chezmoiscripts
+{{ end }}
