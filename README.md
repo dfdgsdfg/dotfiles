@@ -104,3 +104,16 @@ gem install neovim
 - Bitwarden
 - GitUp
 - Visual Studio Code
+
+
+### Config SSH Daemon
+- Turn off password auth
+
+```bash
+sudo tee /etc/ssh/sshd_config.d/turnoff-password.conf << EOF
+PermitRootLogin no
+PasswordAuthentication no
+PermitEmptyPasswords no
+ChallengeResponseAuthentication no
+EOF
+```
