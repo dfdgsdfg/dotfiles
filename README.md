@@ -15,32 +15,33 @@
 
 ```bash
 brew install\
-  fish\ 
-  sk\
-  rg\
-  fzf\
-  asdf\
-  navi\
-  zoxide\
-  lsd\
-  starship\
-  fd\
-  jq\
-  yq\
-  bat\
-  gitui\
-  mosh\
-  trash\
-  zellij\
-  proc\
-  sd\
-  dust\
-  grex\
-  git-delta\
-  bandwhich\
-  nushell\
-  atuin\
-  chezmoi
+ fish\ 
+ sk\
+ rg\
+ fzf\
+ asdf\
+ navi\
+ zoxide\
+ lsd\
+ starship\
+ fd\
+ jq\
+ yq\
+ bat\
+ gitui\
+ mosh\
+ trash\
+ zellij\
+ proc\
+ sd\
+ dust\
+ grex\
+ git-delta\
+ bandwhich\
+ nushell\
+ atuin\
+ sops\
+ chezmoi
 
 brew tap neovim/neovim
 brew install neovim
