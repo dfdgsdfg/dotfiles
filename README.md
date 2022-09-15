@@ -32,7 +32,7 @@ brew install\
  mosh\
  trash\
  zellij\
- proc\
+ procs\
  sd\
  dust\
  grex\
