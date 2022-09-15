@@ -52,7 +52,7 @@ brew tap cjbassi/ytop
 brew install ytop
 
 brew tap homebrew/cask-fonts 
-brew install font-meslolg-nerd-font
+brew install font-meslo-lg-nerd-font
 
 brew install\
  kubectl\
