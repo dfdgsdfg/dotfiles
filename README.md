@@ -40,6 +40,8 @@ brew install\
  bandwhich\
  nushell\
  atuin\
+ bitwarden-cli\
+ age\
  sops\
  chezmoi
 
@@ -51,6 +53,10 @@ brew install ytop
 
 brew tap homebrew/cask-fonts 
 brew install font-meslolg-nerd-font
+
+brew install\
+ kubectl\
+ helm
 ```
 
 ### Config [fish shell](https://fishshell.com)
@@ -105,9 +111,10 @@ gem install neovim
 
 
 ### Install Apps
-- Bitwarden
-- GitUp
-- Visual Studio Code
+- [Bitwarden](https://bitwarden.com/download/)
+- [GitUp](https://gitup.co)
+- [Visual Studio Code](https://code.visualstudio.com)
+- [GCP SDK](https://cloud.google.com/sdk/docs/install-sdk)
 
 
 ### Config SSH Daemon
