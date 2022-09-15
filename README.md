@@ -73,6 +73,10 @@ fisher install danhper/fish-ssh-agent
 
 ```bash
 chezmoi init --ssh --apply dfdgsdfg
+
+# ssh config 
+chezmoi init --prompt --apply
+chezmoi data
 ```
 
 
