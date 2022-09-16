@@ -1,4 +1,4 @@
-{{- $installsshkey := promptBoolOnce . "installsshkey" "Do you want to install default ssh key(yse, no)" -}}
+{{- $installsshkey := promptBoolOnce . "installsshkey" "Do you want to install default ssh key(y, n)" -}}
 
 [data]
     installsshkey = {{- $installsshkey }}

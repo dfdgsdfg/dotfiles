@@ -10,6 +10,3 @@ key.txt.age
   .ssh/.config.d/
 {{ end }}
 
-{{ if eq .chezmoi.os "windows" }}
-  .chezmoiscripts/
-{{ end }}
