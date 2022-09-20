@@ -43,6 +43,7 @@ brew install\
  bitwarden-cli\
  age\
  sops\
+ wget\
  chezmoi
 
 brew tap neovim/neovim
