@@ -4,6 +4,8 @@ key.txt.age
 
 {{ if not .installsshkey }}
   .ssh/authorized_keys
+  .ssh/id_ed25519
+  .ssh/id_ed25519.pub
   .ssh/id_rsa
   .ssh/id_rsa.pub
   .ssh/id_rsa.pub.pem
