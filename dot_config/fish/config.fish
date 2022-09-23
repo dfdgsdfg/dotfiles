@@ -25,6 +25,7 @@ set -Ua fish_user_paths ~/opt/google-cloud-sdk/bin
 set -Ua fish_user_paths ~/.pub-cache/bin
 set -Ua fish_user_paths ~/flutter/bin
 set -Ua fish_user_paths ~/Library/Android/sdk/platform-tools
+set -Ua fish_user_paths "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 
 # ENV   
