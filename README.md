@@ -88,8 +88,13 @@ brew install\
 - [change default shell to fish](https://fishshell.com/docs/3.0/tutorial.html#tut_switching_to_fish)
 
 ```bash
+## x86
 echo /usr/local/bin/fish | sudo tee -a /etc/shells
 chsh -s /usr/local/bin/fish
+
+## amd
+echo /opt/homebrew/bin/fish | sudo tee -a /etc/shells
+chsh -s /opt/homebrew/bin/fish
 ```
 
 
