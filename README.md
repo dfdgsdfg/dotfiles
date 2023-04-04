@@ -101,13 +101,14 @@ chsh -s /opt/homebrew/bin/fish
 ### `*nix` Install [Fisher](https://github.com/jorgebucaran/fisher)
 
 ```bash
-curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 ```
 
 
 ### Install Dotfiles with [chezmoi](https://www.chezmoi.io)
 
 ```bash
+# need key.txt (age) on ~
 chezmoi init --ssh --apply dfdgsdfg
 
 # ssh config 
