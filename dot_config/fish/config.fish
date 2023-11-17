@@ -5,10 +5,10 @@ set fisher_config ~/.config/fisherman
 
 # Homebrew
 switch (sysctl -n machdep.cpu.brand_string)
-  case '*Apple*'
-    eval (/opt/homebrew/bin/brew shellenv)
-  case '*'
-    eval (/usr/local/bin/brew shellenv)
+    case '*Apple*'
+        eval (/opt/homebrew/bin/brew shellenv)
+    case '*'
+        eval (/usr/local/bin/brew shellenv)
 end
 
 
@@ -24,6 +24,7 @@ set -Up fish_user_paths ~/bin
 set -Ua fish_user_paths ~/opt/google-cloud-sdk/bin
 set -Ua fish_user_paths ~/.pub-cache/bin
 set -Ua fish_user_paths ~/flutter/bin
+set -Ua fish_user_paths ~/.shorebird/bin
 set -Ua fish_user_paths ~/Library/Android/sdk/platform-tools
 set -Ua fish_user_paths "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
@@ -31,7 +32,7 @@ set -Ua fish_user_paths "/Applications/Visual Studio Code.app/Contents/Resources
 # ENV   
 set -x LANG "ko_KR.UTF-8"
 set -x EDITOR nvim
-set -x GO111MODULE "on"
+set -x GO111MODULE on
 set -x CLOUDSDK_PYTHON_SITEPACKAGES 1
 # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
 set -x USE_GKE_GCLOUD_AUTH_PLUGIN True
@@ -45,7 +46,7 @@ set -x NODE_OPTIONS "--max-old-space-size=8096"
 
 
 # eval    
-test -e ~/.iterm2_shell_integration.fish ; and source ~/.iterm2_shell_integration.fish
+test -e ~/.iterm2_shell_integration.fish; and source ~/.iterm2_shell_integration.fish
 source ~/.config/fish/credential.fish
 navi widget fish | source
 zoxide init fish | source
@@ -76,4 +77,3 @@ alias top="ytop"
 alias diff="delta"
 alias network="bandwhich"
 alias gcloud="env ASDF_PYTHON_VERSION=3.10.2 gcloud"
-
