@@ -25,6 +25,8 @@ set -Ua fish_user_paths ~/opt/google-cloud-sdk/bin
 set -Ua fish_user_paths ~/.pub-cache/bin
 set -Ua fish_user_paths ~/flutter/bin
 set -Ua fish_user_paths ~/.shorebird/bin
+set -Ua fish_user_paths ~/Library/Android/sdk/tools
+set -Ua fish_user_paths ~/Library/Android/sdk/tools/bin
 set -Ua fish_user_paths ~/Library/Android/sdk/platform-tools
 set -Ua fish_user_paths "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
@@ -43,6 +45,7 @@ set -gx NO_PROXY localhost,127.0.0.1
 set -x NODE_OPTIONS "--max-old-space-size=8096"
 # https://stackoverflow.com/questions/71320584/flutter-build-ios-got-error-requested-but-did-not-find-extension-point-with-ide
 # set -x SDKROOT (xcrun -sdk macosx --show-sdk-path)
+set -x ANDROID_HOME ~/Library/Android/sdk
 
 
 # eval    
