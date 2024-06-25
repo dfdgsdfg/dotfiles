@@ -57,11 +57,12 @@ zoxide init fish | source
 starship init fish | source
 atuin init fish | source
 
+
 # https://ccache.dev/
 # https://github.com/invertase/firestore-ios-sdk-frameworks/discussions/82
 # https://dev.to/leehack/optimize-flutter-ios-build-using-ccache-2oi2
 if command -v ccache >/dev/null 2>&1
-    set -Ua fish_user_paths /opt/homebrew/opt/ccache/libexec
+    set -Up fish_user_paths /opt/homebrew/opt/ccache/libexec
     set -gx CCACHE_SLOPPINESS clang_index_store,file_stat_matches,include_file_ctime,include_file_mtime,ivfsoverlay,pch_defines,modules,system_headers,time_macros
     set -gx CCACHE_FILECLONE true
     set -gx CCACHE_DEPEND true
