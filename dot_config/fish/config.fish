@@ -28,6 +28,7 @@ set -Ua fish_user_paths ~/.shorebird/bin
 set -Ua fish_user_paths ~/Library/Android/sdk/tools
 set -Ua fish_user_paths ~/Library/Android/sdk/tools/bin
 set -Ua fish_user_paths ~/Library/Android/sdk/platform-tools
+set -Ua fish_user_paths ~/.maestro/bin
 set -Ua fish_user_paths "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 
@@ -56,6 +57,17 @@ zoxide init fish | source
 starship init fish | source
 atuin init fish | source
 
+# https://ccache.dev/
+# https://github.com/invertase/firestore-ios-sdk-frameworks/discussions/82
+# https://dev.to/leehack/optimize-flutter-ios-build-using-ccache-2oi2
+if command -v ccache >/dev/null 2>&1
+    set -Ua fish_user_paths /opt/homebrew/opt/ccache/libexec
+    set -gx CCACHE_SLOPPINESS clang_index_store,file_stat_matches,include_file_ctime,include_file_mtime,ivfsoverlay,pch_defines,modules,system_headers,time_macros
+    set -gx CCACHE_FILECLONE true
+    set -gx CCACHE_DEPEND true
+    set -gx CCACHE_INODECACHE true
+end
+
 
 # asdf
 source (brew --prefix asdf)/libexec/asdf.fish
@@ -63,6 +75,7 @@ source (brew --prefix asdf)/libexec/asdf.fish
 # direnv hook fish | source
 ## asdf-java
 source ~/.asdf/plugins/java/set-java-home.fish
+
 
 
 # alias
@@ -80,3 +93,8 @@ alias top="ytop"
 alias diff="delta"
 alias network="bandwhich"
 alias gcloud="env ASDF_PYTHON_VERSION=3.11.8 gcloud"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/dididi/opt/google-cloud-sdk/path.fish.inc' ]
+    . '/Users/dididi/opt/google-cloud-sdk/path.fish.inc'
+end
