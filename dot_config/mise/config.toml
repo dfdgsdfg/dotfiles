@@ -1,0 +1,11 @@
+[tools]
+node = "lts"
+gcloud = "latest"
+python = "miniconda3-latest"
+deno = "latest"
+pnpm = "latest"
+java = "zulu-21"
+ruby = "3.3"
+go = "1.22"
+bun = "latest"
+erlang = "27"

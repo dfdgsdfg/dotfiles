@@ -82,6 +82,8 @@ brew install font-meslo-lg-nerd-font
 brew install\
  kubectl\
  helm
+
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 ### `*nix` Config [fish shell](https://fishshell.com)
