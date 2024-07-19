@@ -39,6 +39,7 @@ neovim
 ```bash
 brew install\
  fish\
+ nushell\
  sk\
  rg\
  fzf\
@@ -47,6 +48,8 @@ brew install\
  zoxide\
  lsd\
  starship\
+ ripgrep\
+ rga\
  fd\
  jq\
  yq\
@@ -61,17 +64,16 @@ brew install\
  grex\
  git-delta\
  bandwhich\
- nushell\
  atuin\
  cloudflared\
  bitwarden-cli\
  age\
  sops\
  wget\
+ pipx\
+ neovim\
+ helix\
  chezmoi
-
-brew tap neovim/neovim
-brew install neovim
 
 brew tap cjbassi/ytop
 brew install ytop
