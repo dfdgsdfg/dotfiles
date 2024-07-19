@@ -93,7 +93,7 @@ alias du="dust"
 alias top="ytop"
 alias diff="delta"
 alias network="bandwhich"
-alias gcloud="env MISE_PYTHON_VERSION=3.11.8 gcloud"
+alias gcloud="env MISE_PYTHON_VERSION=3.12.4 gcloud"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/dididi/opt/google-cloud-sdk/path.fish.inc' ]
