@@ -21,6 +21,10 @@ else
 end
 
 
+# https://rustup.rs/
+source "$HOME/.cargo/env.fish"
+
+
 # PATH   
 set -U fish_user_paths
 set -Up fish_user_paths /usr/local/sbin

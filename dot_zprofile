@@ -7,6 +7,9 @@ else
   eval "$(/usr/local/bin/mise activate zsh --shims)"
 fi
 
+# https://rustup.rs/
+. "$HOME/.cargo/env"
+
 
 # https://ccache.dev/
 # https://github.com/invertase/firestore-ios-sdk-frameworks/discussions/82
