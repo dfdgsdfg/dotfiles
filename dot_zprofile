@@ -1,11 +1,12 @@
 if [[ $(sysctl -n machdep.cpu.brand_string) =~ "Apple" ]]
 then
   eval "$(/opt/homebrew/bin/brew shellenv)"
+  eval "$(/opt/homebrew/bin/mise activate bash)"
 else
   eval "$(/usr/local/bin/brew shellenv)"
+  eval "$(/usr/local/bin/mise activate bash)"
 fi
 
-eval "$(~/.local/bin/mise activate zsh)"
 
 # https://ccache.dev/
 # https://github.com/invertase/firestore-ios-sdk-frameworks/discussions/82

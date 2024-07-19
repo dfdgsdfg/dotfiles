@@ -71,7 +71,12 @@ end
 
 
 # mise
-~/.local/bin/mise activate fish | source
+switch (sysctl -n machdep.cpu.brand_string)
+    case '*Apple*'
+        /opt/homebrew/bin/mise activate fish | source
+    case '*'
+        /usr/local/bin/mise activate fish | source
+end
 
 
 # alias
@@ -88,7 +93,7 @@ alias du="dust"
 alias top="ytop"
 alias diff="delta"
 alias network="bandwhich"
-alias gcloud="env ASDF_PYTHON_VERSION=3.11.8 gcloud"
+alias gcloud="env MISE_PYTHON_VERSION=3.11.8 gcloud"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/dididi/opt/google-cloud-sdk/path.fish.inc' ]
