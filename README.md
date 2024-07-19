@@ -120,6 +120,8 @@ chezmoi data
 ### `*nix` Config [mise](https://mise.jdx.dev/)
 
 ```bash
+# https://mise.jdx.dev/ide-integration.html#jetbrains-editors-intellij-rustrover-pycharm-webstorm-rubymine-goland-etc
+ln -s ~/.local/share/mise ~/.asdf
 ```
 
 

@@ -3,12 +3,21 @@ set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
 
 
-# Homebrew
+# Homebrew, mise
 switch (sysctl -n machdep.cpu.brand_string)
     case '*Apple*'
         eval (/opt/homebrew/bin/brew shellenv)
+        /opt/homebrew/bin/mise activate fish | source
     case '*'
         eval (/usr/local/bin/brew shellenv)
+        /usr/local/bin/mise activate fish | source
+end
+
+
+# https://mise.jdx.dev/ide-integration.html
+if status is-interactive
+else
+    mise activate fish --shims | source
 end
 
 
@@ -67,15 +76,6 @@ if command -v ccache >/dev/null 2>&1
     set -gx CCACHE_FILECLONE true
     set -gx CCACHE_DEPEND true
     set -gx CCACHE_INODECACHE true
-end
-
-
-# mise
-switch (sysctl -n machdep.cpu.brand_string)
-    case '*Apple*'
-        /opt/homebrew/bin/mise activate fish | source
-    case '*'
-        /usr/local/bin/mise activate fish | source
 end
 
 
