@@ -70,13 +70,8 @@ if command -v ccache >/dev/null 2>&1
 end
 
 
-# asdf
-source (brew --prefix asdf)/libexec/asdf.fish
-## asdf-direnv
-# direnv hook fish | source
-## asdf-java
-source ~/.asdf/plugins/java/set-java-home.fish
-
+# mise
+~/.local/bin/mise activate fish | source
 
 
 # alias

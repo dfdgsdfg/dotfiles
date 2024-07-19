@@ -42,7 +42,7 @@ brew install\
  sk\
  rg\
  fzf\
- asdf\
+ mise\
  navi\
  zoxide\
  lsd\
@@ -117,12 +117,9 @@ chezmoi data
 ```
 
 
-### `*nix` Config [asdf](https://asdf-vm.com)
+### `*nix` Config [mise](https://mise.jdx.dev/)
 
 ```bash
-asdf plugin add python
-asdf install python miniconda3-latest
-asdf global python miniconda3-latest
 ```
 
 

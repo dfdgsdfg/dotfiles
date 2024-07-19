@@ -5,7 +5,7 @@ else
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-source "$(brew --prefix asdf)/libexec/asdf.sh"
+eval "$(~/.local/bin/mise activate zsh)"
 
 # https://ccache.dev/
 # https://github.com/invertase/firestore-ios-sdk-frameworks/discussions/82
