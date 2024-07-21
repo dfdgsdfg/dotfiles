@@ -1,0 +1,27 @@
+cask "love", args: { appdir: "~/Applications" }
+
+cask "crossover", args: { appdir: "~/Applications" }
+cask "whisky", args: { appdir: "~/Applications" } 
+cask "wineskin", args: { appdir: "~/Applications" } 
+
+cask "heroic", args: { appdir: "~/Applications" } 
+
+cask "steam", args: { appdir: "~/Applications" } 
+cask "epic-games", args: { appdir: "~/Applications" } 
+cask "gog-galaxy", args: { appdir: "~/Applications" } 
+
+cask "scummvm", args: { appdir: "~/Applications" } 
+cask "openemu", args: { appdir: "~/Applications" } 
+
+cask "angband", args: { appdir: "~/Applications" } 
+cask "brogue", args: { appdir: "~/Applications" } 
+cask "dungeon-crawl-stone-soup-tiles", args: { appdir: "~/Applications" } 
+cask "openmw", args: { appdir: "~/Applications" } 
+
+cask "openra", args: { appdir: "~/Applications" } 
+cask "openrtc2", args: { appdir: "~/Applications" } 
+cask "openttd", args: { appdir: "~/Applications" } 
+cask "corsixth", args: { appdir: "~/Applications" } 
+
+cask "raze", args: { appdir: "~/Applications" } 
+cask "gzdoom", args: { appdir: "~/Applications" } 
