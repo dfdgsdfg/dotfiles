@@ -8,8 +8,6 @@
 - `Preferences` -> `Profiles` -> `Keys` -> `Key Mappings` -> `Presets` -> Select `Natural Text Editing`
 
 
-### `MacOS` Install [Wrap](https://www.warp.dev)
-
 ### `Windows` Config [winget](https://learn.microsoft.com/en-us/windows/package-manager/winget/)
 
 ```powershell
@@ -17,6 +15,7 @@ winget install `
 Microsoft.WindowsTerminal `
 Microsoft.Powershell
 ```
+
 
 ### `Windows` Install [Scoop](https://scoop-docs.vercel.app)
 
@@ -46,6 +45,7 @@ brew bundle --file Appfile
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
+
 
 ### `*nix` Config [fish shell](https://fishshell.com)
 - [change default shell to fish](https://fishshell.com/docs/3.0/tutorial.html#tut_switching_to_fish)
@@ -96,8 +96,6 @@ npm i -g neovim
 pip install pynvim
 gem install neovim
 ```
-
-
 
 
 ### Config SSH Daemon
