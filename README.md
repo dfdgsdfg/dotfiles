@@ -37,53 +37,12 @@ neovim
 ### `MacOS` Install [Homebrew](http://brew.sh/)
 
 ```bash
-brew install\
- fish\
- nushell\
- sk\
- rg\
- fzf\
- mise\
- navi\
- zoxide\
- lsd\
- starship\
- ripgrep\
- rga\
- fd\
- jq\
- yq\
- bat\
- gitui\
- mosh\
- trash\
- zellij\
- procs\
- sd\
- dust\
- grex\
- git-delta\
- bandwhich\
- atuin\
- cloudflared\
- bitwarden-cli\
- age\
- sops\
- wget\
- pipx\
- neovim\
- helix\
- chezmoi
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew tap cjbassi/ytop
-brew install ytop
+brew bundle
 
-brew tap homebrew/cask-fonts 
-brew install font-meslo-lg-nerd-font
-
-brew install\
- kubectl\
- helm
+# Needs Appstore login
+brew bundle --file Appfile 
 
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
@@ -139,11 +98,6 @@ gem install neovim
 ```
 
 
-### Install Apps
-- [Bitwarden](https://bitwarden.com/download/)
-- [GitUp](https://gitup.co)
-- [Visual Studio Code](https://code.visualstudio.com)
-- [GCP SDK](https://cloud.google.com/sdk/docs/install-sdk)
 
 
 ### Config SSH Daemon
