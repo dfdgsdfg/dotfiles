@@ -40,6 +40,8 @@ neovim
 
 brew bundle
 
+brew bundle --file Caskfile
+
 # Needs Appstore login
 brew bundle --file Appfile 
 
