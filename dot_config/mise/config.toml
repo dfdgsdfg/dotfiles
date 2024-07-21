@@ -1,6 +1,5 @@
 [tools]
 node = "lts"
-gcloud = "latest"
 python = "miniconda3-latest"
 deno = "latest"
 pnpm = "latest"
@@ -9,5 +8,3 @@ ruby = "3.3"
 go = "1.22"
 bun = "latest"
 erlang = "27"
-firebase = "latest"
-github-cli = "latest"
