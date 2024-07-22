@@ -1,3 +1,5 @@
+tap "gcenx/wine
+
 cask "love", args: { appdir: "~/Applications" }
 
 cask "crossover", args: { appdir: "~/Applications" }

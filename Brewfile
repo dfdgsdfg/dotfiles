@@ -1,5 +1,4 @@
 tap "cjbassi/ytop"
-tap "gcenx/wine"
 tap "homebrew/bundle"
 tap "neovim/neovim"
 brew "age"
