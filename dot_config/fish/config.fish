@@ -7,10 +7,22 @@ set fisher_config ~/.config/fisherman
 switch (sysctl -n machdep.cpu.brand_string)
     case '*Apple*'
         eval (/opt/homebrew/bin/brew shellenv)
-        /opt/homebrew/bin/mise activate fish | source
+        if test "$VSCODE_RESOLVING_ENVIRONMENT" = 1
+            /opt/homebrew/bin/mise activate fish --shims | source
+        else if status is-interactive
+            /opt/homebrew/bin/mise activate fish | source
+        else
+            /opt/homebrew/bin/mise activate fish --shims | source
+        end
     case '*'
         eval (/usr/local/bin/brew shellenv)
-        /usr/local/bin/mise activate fish | source
+        if test "$VSCODE_RESOLVING_ENVIRONMENT" = 1
+            /usr/local/bin/mise activate fish --shims | source
+        else if status is-interactive
+            /usr/local/bin/mise activate fish | source
+        else
+            /usr/local/bin/mise activate fish --shims | source
+        end
 end
 
 
