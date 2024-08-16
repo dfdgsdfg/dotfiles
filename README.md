@@ -39,12 +39,19 @@ neovim
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew bundle
-
-brew bundle --file Caskfile
+brew bundle --file Brewfile-cask
 
 # Needs Appstore login
-brew bundle --file Appfile 
+brew bundle --file Brewfile-app 
+```
 
+### `*nix` Config [mise](https://github.com/jdx/mise)
+```sh
+mise i
+mise ls
+
+# rustup
+# https://mise.jdx.dev/lang/rust.html
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
