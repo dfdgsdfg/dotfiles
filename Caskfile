@@ -28,4 +28,5 @@ cask "warp"
 cask "wireshark"
 cask "zed"
 cask "zoom"
+cask "zotero"
 
