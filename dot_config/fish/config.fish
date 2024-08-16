@@ -47,7 +47,6 @@ set -Up fish_user_paths ~/opt/bin
 set -Up fish_user_paths ~/.local/bin
 set -Up fish_user_paths ~/bin
 set -Up fish_user_paths ~/.pub-cache/bin
-set -Ua fish_user_paths ~/.shorebird/bin
 set -Ua fish_user_paths ~/Library/Android/sdk/tools
 set -Ua fish_user_paths ~/Library/Android/sdk/tools/bin
 set -Ua fish_user_paths ~/Library/Android/sdk/platform-tools
@@ -107,4 +106,4 @@ alias du="dust"
 alias top="ytop"
 alias diff="delta"
 alias network="bandwhich"
-alias gcloud="env MISE_PYTHON_VERSION=3.12.4 gcloud"
+#alias gcloud="env MISE_PYTHON_VERSION=3.12.4 gcloud"
