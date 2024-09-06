@@ -44,6 +44,7 @@ set -Up fish_user_paths /usr/local/bin
 set -Up fish_user_paths /opt/homebrew/sbin
 set -Up fish_user_paths /opt/homebrew/bin
 set -Up fish_user_paths ~/opt/bin
+set -Up fish_user_paths ~/opt/bin/depot_tools
 set -Up fish_user_paths ~/.local/bin
 set -Up fish_user_paths ~/bin
 set -Up fish_user_paths ~/.pub-cache/bin
