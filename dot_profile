@@ -10,6 +10,8 @@ fi
 # https://rustup.rs/
 . "$HOME/.cargo/env"
 
+# https://github.com/asdf-community/asdf-flutter
+export FLUTTER_ROOT="$(mise where flutter)"
 
 # https://ccache.dev/
 # https://github.com/invertase/firestore-ios-sdk-frameworks/discussions/82
