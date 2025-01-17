@@ -107,6 +107,16 @@ gem install neovim
 ```
 
 
+### Config Playwright
+https://playwright.dev/python/docs/intro
+
+```sh
+conda config --add channels conda-forge
+conda config --add channels microsoft
+conda install pytest-playwright
+```
+
+
 ### Config SSH Daemon
 - Turn off password auth
 
