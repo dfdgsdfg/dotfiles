@@ -3,6 +3,12 @@ set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
 
 
+# Nix
+if test -e ~/.nix-profile/etc/profile.d/nix.sh
+    bass source ~/.nix-profile/etc/profile.d/nix.sh
+end
+
+
 # Homebrew, mise
 switch (sysctl -n machdep.cpu.brand_string)
     case '*Apple*'
