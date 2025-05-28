@@ -45,6 +45,68 @@ brew bundle --file Brewfile-cask
 brew bundle --file Brewfile-app 
 ```
 
+### `*nix` Install [Nix](https://nixos.org/download.html)
+
+```bash
+# For single-user installation
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+
+# For multi-user installation
+sh <(curl -L https://nixos.org/nix/install)
+
+# macOS 10.15 Catalina or newer needs this extra step
+mkdir -p ~/.config/nix
+echo "experimental-features = nix-command flakes" > ~/.config/nix/nix.conf
+```
+
+#### Benefits of Nix
+
+- **Reproducible**: Same packages and versions across all machines
+- **Declarative**: System configuration defined in code
+- **Reliable**: No dependency conflicts, clean rollbacks
+- **Multi-user**: Different users can have different configurations without interference
+- **Atomic upgrades and rollbacks**: Easy to go back if something breaks
+- **Works alongside Homebrew**: Can be used together with existing setup
+
+### `MacOS` Install [nix-darwin](https://github.com/LnL7/nix-darwin)
+
+```bash
+# First ensure Nix is installed from the step above
+
+# Clone this repo to get the darwin configuration
+# or use the example configuration below to create your own
+git clone https://github.com/dfdgsdfg/dotfiles.git
+cd dotfiles
+
+# Build the initial configuration (first-time setup)
+nix build .#darwinConfigurations.$(hostname -s).system
+
+# Apply the configuration
+./result/sw/bin/darwin-rebuild switch --flake .#
+```
+
+### Using Nix and nix-darwin
+
+The Nix configuration is organized as follows:
+
+- `flake.nix`: The main entry point for nix-darwin
+- `nix/darwin-configuration.nix`: Base configuration for macOS systems
+- `nix/home.nix`: Home Manager configuration for user environment
+
+To customize for your machine:
+
+1. Edit `flake.nix` to change "yourhost" to your machine's hostname
+2. Customize `nix/home.nix` with your Git information and preferred packages
+3. Create a host-specific configuration file by copying `nix/example-host.nix` to `nix/yourhostname.nix`
+4. Update the configuration: `darwin-rebuild switch --flake .#`
+
+After setting up, you can update your system with:
+
+```bash
+# Update packages and apply configuration
+darwin-rebuild switch --flake .#
+```
+
 ### `*nix` Config [mise](https://github.com/jdx/mise)
 ```sh
 mise i
