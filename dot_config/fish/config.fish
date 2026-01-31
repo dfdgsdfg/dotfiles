@@ -2,7 +2,6 @@
 set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
 
-
 # Homebrew, mise
 switch (sysctl -n machdep.cpu.brand_string)
     case '*Apple*'
@@ -25,17 +24,14 @@ switch (sysctl -n machdep.cpu.brand_string)
         end
 end
 
-
 # https://mise.jdx.dev/ide-integration.html
 if status is-interactive
 else
     mise activate fish --shims | source
 end
 
-
 # https://rustup.rs/
 source "$HOME/.cargo/env.fish"
-
 
 # PATH   
 set -U fish_user_paths
@@ -53,7 +49,8 @@ set -Ua fish_user_paths ~/Library/Android/sdk/tools/bin
 set -Ua fish_user_paths ~/Library/Android/sdk/platform-tools
 set -Ua fish_user_paths ~/.maestro/bin
 set -Ua fish_user_paths "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
+# Added by Antigravity
+set -Ua fish_user_paths ~/.antigravity/antigravity/bin
 
 # ENV   
 set -x LANG "ko_KR.UTF-8"
@@ -78,6 +75,12 @@ zoxide init fish | source
 starship init fish | source
 atuin init fish | source
 
+# pnpm
+set -gx PNPM_HOME /Users/dididi/Library/pnpm
+if not string match -q -- $PNPM_HOME $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
 
 # https://ccache.dev/
 # https://github.com/invertase/firestore-ios-sdk-frameworks/discussions/82
@@ -90,31 +93,21 @@ if command -v ccache >/dev/null 2>&1
     set -gx CCACHE_INODECACHE true
 end
 
-
 # alias
 alias ls="lsd"
 alias l="ls -l"
 alias la="ls -a"
 alias lla="ls -la"
 alias lt="ls --tree"
-alias cat="bat --paging=never"
+alias cat="bat --paging=never -p"
 alias cd="z"
 alias rm="trash"
 alias ps="procs"
 alias du="dust"
-alias top="ytop"
+alias top="btm"
 alias diff="delta"
 alias network="bandwhich"
 #alias gcloud="env MISE_PYTHON_VERSION=3.12.4 gcloud"
 alias npm_legacy="command npm"
 alias npm="pnpm"
-
-# Added by Antigravity
-fish_add_path /Users/dididi/.antigravity/antigravity/bin
-
-# pnpm
-set -gx PNPM_HOME "/Users/dididi/Library/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
+alias http="xh"
