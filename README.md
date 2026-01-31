@@ -56,6 +56,14 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
 
+### `*nix` Config [pnpm](https://pnpm.io) with corepack
+```sh
+# https://pnpm.io/installation#using-corepack
+corepack enable pnpm
+corepack use pnpm@latest
+```
+
+
 ### `*nix` Config [fish shell](https://fishshell.com)
 - [change default shell to fish](https://fishshell.com/docs/3.0/tutorial.html#tut_switching_to_fish)
 
