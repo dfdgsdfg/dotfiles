@@ -24,3 +24,6 @@ then
   export CCACHE_DEPEND=true
   export CCACHE_INODECACHE=true
 fi
+
+[ -f "/Users/dididi/.ghcup/env" ] && . "/Users/dididi/.ghcup/env" # ghcup-env
+export PATH="$HOME/.elan/bin:$PATH"

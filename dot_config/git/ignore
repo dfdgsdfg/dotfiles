@@ -106,3 +106,5 @@ Session.vim
 #*.sql
 #*.sqlite
 
+
+**/.claude/settings.local.json

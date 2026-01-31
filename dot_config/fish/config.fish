@@ -70,8 +70,6 @@ set -x NODE_OPTIONS "--max-old-space-size=8096"
 # https://stackoverflow.com/questions/71320584/flutter-build-ios-got-error-requested-but-did-not-find-extension-point-with-ide
 # set -x SDKROOT (xcrun -sdk macosx --show-sdk-path)
 set -x ANDROID_HOME ~/Library/Android/sdk
-set -x FLUTTER_ROOT (mise where flutter)
-
 # eval    
 test -e ~/.iterm2_shell_integration.fish; and source ~/.iterm2_shell_integration.fish
 source ~/.config/fish/credential.fish
@@ -108,3 +106,15 @@ alias top="ytop"
 alias diff="delta"
 alias network="bandwhich"
 #alias gcloud="env MISE_PYTHON_VERSION=3.12.4 gcloud"
+alias npm_legacy="command npm"
+alias npm="pnpm"
+
+# Added by Antigravity
+fish_add_path /Users/dididi/.antigravity/antigravity/bin
+
+# pnpm
+set -gx PNPM_HOME "/Users/dididi/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
