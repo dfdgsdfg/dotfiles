@@ -112,6 +112,8 @@ alias network="bandwhich"
 #alias gcloud="env MISE_PYTHON_VERSION=3.12.4 gcloud"
 alias npm_legacy="command npm"
 alias npm="pnpm"
+alias npx_legacy="command npx"
+alias npx="pnpx"
 alias http="xh"
 
 # Added by Windsurf
