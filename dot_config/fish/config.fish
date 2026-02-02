@@ -33,7 +33,7 @@ end
 # https://rustup.rs/
 source "$HOME/.cargo/env.fish"
 
-# PATH   
+# PATH
 set -U fish_user_paths
 set -Up fish_user_paths /usr/local/sbin
 set -Up fish_user_paths /usr/local/bin
@@ -51,8 +51,10 @@ set -Ua fish_user_paths ~/.maestro/bin
 set -Ua fish_user_paths "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 # Added by Antigravity
 set -Ua fish_user_paths ~/.antigravity/antigravity/bin
+# Lean theorem prover
+set -Ua fish_user_paths ~/.elan/bin
 
-# ENV   
+# ENV
 set -x LANG "ko_KR.UTF-8"
 set -x EDITOR nvim
 set -x GO111MODULE on
@@ -67,7 +69,7 @@ set -x NODE_OPTIONS "--max-old-space-size=8096"
 # https://stackoverflow.com/questions/71320584/flutter-build-ios-got-error-requested-but-did-not-find-extension-point-with-ide
 # set -x SDKROOT (xcrun -sdk macosx --show-sdk-path)
 set -x ANDROID_HOME ~/Library/Android/sdk
-# eval    
+# eval
 test -e ~/.iterm2_shell_integration.fish; and source ~/.iterm2_shell_integration.fish
 source ~/.config/fish/credential.fish
 navi widget fish | source
@@ -111,3 +113,10 @@ alias network="bandwhich"
 alias npm_legacy="command npm"
 alias npm="pnpm"
 alias http="xh"
+
+# Added by Windsurf
+fish_add_path /Users/dididi/.codeium/windsurf/bin
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init2.fish 2>/dev/null || :
