@@ -25,10 +25,7 @@ switch (sysctl -n machdep.cpu.brand_string)
 end
 
 # https://mise.jdx.dev/ide-integration.html
-if status is-interactive
-else
-    mise activate fish --shims | source
-end
+mise activate fish --shims | source
 
 # https://rustup.rs/
 source "$HOME/.cargo/env.fish"
