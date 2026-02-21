@@ -1,15 +1,21 @@
-export ZSHRC_LOADED=1
+if [[ -n "${_ZSHRC_ALREADY_LOADED:-}" ]]; then
+  return
+fi
+typeset -g _ZSHRC_ALREADY_LOADED=1
 
 _SHELL_NAME="${ZSH_VERSION:+zsh}"
 _SHELL_NAME="${_SHELL_NAME:-bash}"
 
 # brew & mise
-if [[ $(sysctl -n machdep.cpu.brand_string) =~ "Apple" ]]
-then
+if [[ -x /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
-  eval "$(/opt/homebrew/bin/mise activate "$_SHELL_NAME" --shims)"
-else
+elif [[ -x /usr/local/bin/brew ]]; then
   eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+if [[ -x /opt/homebrew/bin/mise ]]; then
+  eval "$(/opt/homebrew/bin/mise activate "$_SHELL_NAME" --shims)"
+elif [[ -x /usr/local/bin/mise ]]; then
   eval "$(/usr/local/bin/mise activate "$_SHELL_NAME" --shims)"
 fi
 
