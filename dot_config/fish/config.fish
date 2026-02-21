@@ -69,10 +69,20 @@ set -x ANDROID_HOME ~/Library/Android/sdk
 # eval
 test -e ~/.iterm2_shell_integration.fish; and source ~/.iterm2_shell_integration.fish
 source ~/.config/fish/credential.fish
-navi widget fish | source
-zoxide init fish | source
-starship init fish | source
-atuin init fish | source
+if status is-interactive
+    if command -q navi
+        navi widget fish | source
+    end
+    if command -q zoxide
+        zoxide init fish | source
+    end
+    if command -q starship
+        starship init fish | source
+    end
+    if command -q atuin
+        atuin init fish | source
+    end
+end
 
 # pnpm
 set -gx PNPM_HOME /Users/dididi/Library/pnpm
@@ -92,26 +102,28 @@ if command -v ccache >/dev/null 2>&1
     set -gx CCACHE_INODECACHE true
 end
 
-# alias
-alias ls="lsd"
-alias l="ls -l"
-alias la="ls -a"
-alias lla="ls -la"
-alias lt="ls --tree"
-alias cat="bat --paging=never -p"
-alias cd="z"
-alias rm="trash"
-alias ps="procs"
-alias du="dust"
-alias top="btm"
-alias diff="delta"
-alias network="bandwhich"
-#alias gcloud="env MISE_PYTHON_VERSION=3.12.4 gcloud"
-alias npm_legacy="command npm"
-alias npm="pnpm"
-alias npx_legacy="command npx"
-alias npx="pnpx"
-alias http="xh"
+if status is-interactive
+    # alias
+    alias ls="lsd"
+    alias l="ls -l"
+    alias la="ls -a"
+    alias lla="ls -la"
+    alias lt="ls --tree"
+    alias cat="bat --paging=never -p"
+    alias cd="z"
+    alias rm="trash"
+    alias ps="procs"
+    alias du="dust"
+    alias top="btm"
+    alias diff="delta"
+    alias network="bandwhich"
+    #alias gcloud="env MISE_PYTHON_VERSION=3.12.4 gcloud"
+    alias npm_legacy="command npm"
+    alias npm="pnpm"
+    alias npx_legacy="command npx"
+    alias npx="pnpx"
+    alias http="xh"
+end
 
 # Added by Windsurf
 fish_add_path /Users/dididi/.codeium/windsurf/bin
