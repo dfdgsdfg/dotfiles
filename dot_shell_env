@@ -1,0 +1,76 @@
+if [ -n "${_SHELL_ENV_LOADED:-}" ]; then
+  return 0 2>/dev/null || true
+fi
+export _SHELL_ENV_LOADED=1
+
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
+
+if [ -n "${ZSH_VERSION:-}" ]; then
+  _SHELL_NAME="zsh"
+elif [ -n "${BASH_VERSION:-}" ]; then
+  _SHELL_NAME="bash"
+else
+  _SHELL_NAME="sh"
+fi
+
+if [ -x /opt/homebrew/bin/brew ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [ -x /usr/local/bin/brew ]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
+
+if [ -x /opt/homebrew/bin/mise ]; then
+  eval "$(/opt/homebrew/bin/mise activate "$_SHELL_NAME" --shims)"
+elif [ -x /usr/local/bin/mise ]; then
+  eval "$(/usr/local/bin/mise activate "$_SHELL_NAME" --shims)"
+fi
+unset _SHELL_NAME
+
+path_prepend() {
+  case ":$PATH:" in
+    *":$1:"*) ;;
+    *) PATH="$1:$PATH" ;;
+  esac
+}
+
+path_prepend "$HOME/opt/bin"
+path_prepend "$HOME/opt/bin/depot_tools"
+path_prepend "$HOME/.local/bin"
+path_prepend "$HOME/bin"
+path_prepend "$HOME/.pub-cache/bin"
+path_prepend "$HOME/Library/Android/sdk/tools"
+path_prepend "$HOME/Library/Android/sdk/tools/bin"
+path_prepend "$HOME/Library/Android/sdk/platform-tools"
+path_prepend "$HOME/.maestro/bin"
+path_prepend "/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+path_prepend "$HOME/.antigravity/antigravity/bin"
+
+export LANG="ko_KR.UTF-8"
+export EDITOR="nvim"
+export GO111MODULE="on"
+export CLOUDSDK_PYTHON_SITEPACKAGES="1"
+export USE_GKE_GCLOUD_AUTH_PLUGIN="True"
+export NO_PROXY="localhost,127.0.0.1"
+export NODE_OPTIONS="--max-old-space-size=8096"
+export ANDROID_HOME="$HOME/Library/Android/sdk"
+
+export PNPM_HOME="$HOME/Library/pnpm"
+path_prepend "$PNPM_HOME"
+
+if command -v ccache >/dev/null 2>&1; then
+  path_prepend "/opt/homebrew/opt/ccache/libexec"
+  export CCACHE_SLOPPINESS="clang_index_store,file_stat_matches,include_file_ctime,include_file_mtime,ivfsoverlay,pch_defines,modules,system_headers,time_macros"
+  export CCACHE_FILECLONE="true"
+  export CCACHE_DEPEND="true"
+  export CCACHE_INODECACHE="true"
+fi
+
+if [ -f "$HOME/.ghcup/env" ]; then
+  . "$HOME/.ghcup/env"
+fi
+path_prepend "$HOME/.elan/bin"
+
+export PATH
+unset -f path_prepend 2>/dev/null || true

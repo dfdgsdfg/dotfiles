@@ -1,34 +1,3 @@
-. "$HOME/.cargo/env"
-
-# brew & mise (load for all zsh shells, including non-interactive)
-if [[ -x /opt/homebrew/bin/brew ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [[ -x /usr/local/bin/brew ]]; then
-  eval "$(/usr/local/bin/brew shellenv)"
+if [ -f "$HOME/.shell_env" ]; then
+  . "$HOME/.shell_env"
 fi
-
-if [[ -x /opt/homebrew/bin/mise ]]; then
-  eval "$(/opt/homebrew/bin/mise activate zsh --shims)"
-elif [[ -x /usr/local/bin/mise ]]; then
-  eval "$(/usr/local/bin/mise activate zsh --shims)"
-fi
-
-# PATH
-export PATH="$HOME/opt/bin:$PATH"
-export PATH="$HOME/opt/bin/depot_tools:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/.pub-cache/bin:$PATH"
-export PATH="$HOME/Library/Android/sdk/tools:$PATH"
-export PATH="$HOME/Library/Android/sdk/tools/bin:$PATH"
-export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
-export PATH="$HOME/.maestro/bin:$PATH"
-export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
-export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
-
-# pnpm (load for all zsh shells, including non-interactive)
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac

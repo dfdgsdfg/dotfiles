@@ -1,0 +1,10 @@
+if [ -f "$HOME/.shell_env" ]; then
+  . "$HOME/.shell_env"
+fi
+
+if [[ -n "${_BASHRC_ALREADY_LOADED:-}" ]]; then
+  return
+fi
+export _BASHRC_ALREADY_LOADED=1
+
+# Bash interactive-only settings can go below.

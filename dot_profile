@@ -1,1 +1,3 @@
-[[ -z "$ZSHRC_LOADED" ]] && source ~/.zshrc
+if [ -f "$HOME/.shell_env" ]; then
+  . "$HOME/.shell_env"
+fi
