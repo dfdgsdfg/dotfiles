@@ -7,3 +7,7 @@ typeset -g _ZSHRC_ALREADY_LOADED=1
 ## Completion scripts setup. Remove the following line to uninstall
 [[ -f /Users/dididi/.dart-cli-completion/zsh-config.zsh ]] && . /Users/dididi/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
+
+if command -v starship >/dev/null 2>&1; then
+  eval "$(starship init zsh)"
+fi

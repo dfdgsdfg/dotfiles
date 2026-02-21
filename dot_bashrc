@@ -7,4 +7,10 @@ if [[ -n "${_BASHRC_ALREADY_LOADED:-}" ]]; then
 fi
 export _BASHRC_ALREADY_LOADED=1
 
-# Bash interactive-only settings can go below.
+case "$-" in
+  *i*)
+    if command -v starship >/dev/null 2>&1; then
+      eval "$(starship init bash)"
+    fi
+    ;;
+esac
