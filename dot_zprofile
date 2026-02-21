@@ -1,3 +1,2 @@
-if [[ ! -o interactive ]]; then
-  source ~/.zshrc
-fi
+# Login-shell specific configuration (keep minimal).
+# Shared environment is loaded from ~/.zshenv.

@@ -3,40 +3,6 @@ if [[ -n "${_ZSHRC_ALREADY_LOADED:-}" ]]; then
 fi
 typeset -g _ZSHRC_ALREADY_LOADED=1
 
-_SHELL_NAME="${ZSH_VERSION:+zsh}"
-_SHELL_NAME="${_SHELL_NAME:-bash}"
-
-# brew & mise
-if [[ -x /opt/homebrew/bin/brew ]]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-elif [[ -x /usr/local/bin/brew ]]; then
-  eval "$(/usr/local/bin/brew shellenv)"
-fi
-
-if [[ -x /opt/homebrew/bin/mise ]]; then
-  eval "$(/opt/homebrew/bin/mise activate "$_SHELL_NAME" --shims)"
-elif [[ -x /usr/local/bin/mise ]]; then
-  eval "$(/usr/local/bin/mise activate "$_SHELL_NAME" --shims)"
-fi
-
-unset _SHELL_NAME
-
-# https://rustup.rs/
-. "$HOME/.cargo/env"
-
-# PATH
-export PATH="$HOME/opt/bin:$PATH"
-export PATH="$HOME/opt/bin/depot_tools:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/.pub-cache/bin:$PATH"
-export PATH="$HOME/Library/Android/sdk/tools:$PATH"
-export PATH="$HOME/Library/Android/sdk/tools/bin:$PATH"
-export PATH="$HOME/Library/Android/sdk/platform-tools:$PATH"
-export PATH="$HOME/.maestro/bin:$PATH"
-export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
-export PATH="$HOME/.antigravity/antigravity/bin:$PATH"
-
 # ENV
 export LANG="ko_KR.UTF-8"
 export EDITOR=nvim
@@ -46,13 +12,6 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 export NO_PROXY=localhost,127.0.0.1
 export NODE_OPTIONS="--max-old-space-size=8096"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
-
-# pnpm
-export PNPM_HOME="$HOME/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
 
 # https://ccache.dev/
 if command -v ccache &> /dev/null
