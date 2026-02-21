@@ -24,9 +24,6 @@ switch (sysctl -n machdep.cpu.brand_string)
         end
 end
 
-# https://mise.jdx.dev/ide-integration.html
-mise activate fish --shims | source
-
 # https://rustup.rs/
 source "$HOME/.cargo/env.fish"
 
@@ -62,7 +59,7 @@ set -x USE_GKE_GCLOUD_AUTH_PLUGIN True
 # https://github.com/flutter/flutter/issues/25112
 set -gx NO_PROXY localhost,127.0.0.1
 # https://stackoverflow.com/questions/54441093/how-to-increase-eslint-memory-to-avoid-javascript-heap-out-of-memory
-set -x NODE_OPTIONS "--max-old-space-size=8096"
+set -x NODE_OPTIONS "--max-old-space-size=8192"
 # https://stackoverflow.com/questions/71320584/flutter-build-ios-got-error-requested-but-did-not-find-extension-point-with-ide
 # set -x SDKROOT (xcrun -sdk macosx --show-sdk-path)
 set -x ANDROID_HOME ~/Library/Android/sdk
@@ -102,6 +99,8 @@ if command -v ccache >/dev/null 2>&1
     set -gx CCACHE_INODECACHE true
 end
 
+alias rm="trash"
+
 if status is-interactive
     # alias
     alias ls="lsd"
@@ -111,7 +110,6 @@ if status is-interactive
     alias lt="ls --tree"
     alias cat="bat --paging=never -p"
     alias cd="z"
-    alias rm="trash"
     alias ps="procs"
     alias du="dust"
     alias top="btm"

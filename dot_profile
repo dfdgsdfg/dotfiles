@@ -24,7 +24,6 @@ if [ -z "${BASH_VERSION:-}" ] && [ -z "${ZSH_VERSION:-}" ]; then
       alias lt="ls --tree"
       alias cat="bat --paging=never -p"
       alias cd="z"
-      alias rm="trash"
       alias ps="procs"
       alias du="dust"
       alias top="btm"
