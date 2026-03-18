@@ -28,6 +28,9 @@
 [include]
   path = config-user
 
+[fetch]
+	pruneTags = true
+
 [pull]
 	rebase = false
 
