@@ -9,11 +9,11 @@ if [ -z "${BASH_VERSION:-}" ] && [ -z "${ZSH_VERSION:-}" ]; then
       if command -v navi >/dev/null 2>&1; then
         eval "$(navi widget bash)"
       fi
-      if command -v zoxide >/dev/null 2>&1; then
-        eval "$(zoxide init posix)"
-      fi
       if command -v starship >/dev/null 2>&1; then
         eval "$(starship init bash)"
+      fi
+      if command -v zoxide >/dev/null 2>&1; then
+        eval "$(zoxide init posix)"
       fi
       # atuin has no POSIX sh init target.
 
