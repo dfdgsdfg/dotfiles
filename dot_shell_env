@@ -75,6 +75,7 @@ if [ -f "$HOME/.ghcup/env" ]; then
   . "$HOME/.ghcup/env"
 fi
 path_prepend "$HOME/.elan/bin"
+path_prepend "$HOME/opt/tlpas/lib"
 
 export PATH
 unset -f path_prepend 2>/dev/null || true
