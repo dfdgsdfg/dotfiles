@@ -47,6 +47,7 @@ set -Ua fish_user_paths "/Applications/Visual Studio Code.app/Contents/Resources
 set -Ua fish_user_paths ~/.antigravity/antigravity/bin
 # Lean theorem prover
 set -Ua fish_user_paths ~/.elan/bin
+set -Ua fish_user_paths ~/opt/tlpas/lib
 
 # ENV
 set -x LANG "ko_KR.UTF-8"
@@ -83,8 +84,11 @@ end
 
 # pnpm
 set -gx PNPM_HOME /Users/dididi/Library/pnpm
-if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
+# pnpm 11 uses $PNPM_HOME/bin as the global bin dir; older shims still live in $PNPM_HOME
+for dir in "$PNPM_HOME/bin" "$PNPM_HOME"
+    if not string match -q -- $dir $PATH
+        set -gx PATH $dir $PATH
+    end
 end
 # pnpm end
 
@@ -129,3 +133,7 @@ fish_add_path /Users/dididi/.codeium/windsurf/bin
 # Added by OrbStack: command-line tools and integration
 # This won't be added again if you remove it.
 source ~/.orbstack/shell/init2.fish 2>/dev/null || :
+
+
+# Added by Antigravity CLI installer
+set -gx PATH "/Users/dididi/.local/bin" $PATH
