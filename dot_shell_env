@@ -59,7 +59,9 @@ export NODE_OPTIONS="--max-old-space-size=8192"
 export ANDROID_HOME="$HOME/Library/Android/sdk"
 
 export PNPM_HOME="$HOME/Library/pnpm"
+# pnpm 11 uses $PNPM_HOME/bin as the global bin dir; older shims still live in $PNPM_HOME
 path_prepend "$PNPM_HOME"
+path_prepend "$PNPM_HOME/bin"
 
 if command -v ccache >/dev/null 2>&1; then
   path_prepend "/opt/homebrew/opt/ccache/libexec"
