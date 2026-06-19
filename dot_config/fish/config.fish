@@ -71,9 +71,6 @@ if status is-interactive
     if command -q navi
         navi widget fish | source
     end
-    if command -q zoxide
-        zoxide init fish | source
-    end
     if command -q starship
         starship init fish | source
     end
@@ -113,7 +110,6 @@ if status is-interactive
     alias lla="ls -la"
     alias lt="ls --tree"
     alias cat="bat --paging=never -p"
-    alias cd="z"
     alias ps="procs"
     alias du="dust"
     alias top="btm"
@@ -137,3 +133,10 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
 # Added by Antigravity CLI installer
 set -gx PATH "/Users/dididi/.local/bin" $PATH
+
+# zoxide — must be initialized at the very end of the config (replaces `cd`)
+if status is-interactive
+    if command -q zoxide
+        zoxide init --cmd cd fish | source
+    end
+end
