@@ -23,13 +23,6 @@ elif [ -x /usr/local/bin/brew ]; then
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-if [ -x /opt/homebrew/bin/mise ]; then
-  eval "$(/opt/homebrew/bin/mise activate "$_SHELL_NAME" --shims)"
-elif [ -x /usr/local/bin/mise ]; then
-  eval "$(/usr/local/bin/mise activate "$_SHELL_NAME" --shims)"
-fi
-unset _SHELL_NAME
-
 path_prepend() {
   case ":$PATH:" in
     *":$1:"*) ;;
@@ -76,6 +69,14 @@ if [ -f "$HOME/.ghcup/env" ]; then
 fi
 path_prepend "$HOME/.elan/bin"
 path_prepend "$HOME/opt/tlpas/lib"
+
+# Activate mise LAST so its shims take precedence over every path_prepend above.
+if [ -x /opt/homebrew/bin/mise ]; then
+  eval "$(/opt/homebrew/bin/mise activate "$_SHELL_NAME" --shims)"
+elif [ -x /usr/local/bin/mise ]; then
+  eval "$(/usr/local/bin/mise activate "$_SHELL_NAME" --shims)"
+fi
+unset _SHELL_NAME
 
 export PATH
 unset -f path_prepend 2>/dev/null || true

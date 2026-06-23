@@ -9,6 +9,13 @@ export _BASHRC_ALREADY_LOADED=1
 
 case "$-" in
   *i*)
+    # Interactive bash: activate mise in hook mode (directory-aware tool
+    # versions). ~/.shell_env (sourced above) already put mise's shims on PATH
+    # for non-interactive shells; activate's install dirs take precedence here.
+    if command -v mise >/dev/null 2>&1; then
+      eval "$(mise activate bash)"
+    fi
+
     if command -v navi >/dev/null 2>&1; then
       eval "$(navi widget bash)"
     fi

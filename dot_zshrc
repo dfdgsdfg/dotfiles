@@ -37,9 +37,17 @@ alias npx_legacy="command npx"
 alias npx="pnpx"
 alias http="xh"
 
+# Note: ~/.local/bin is already on PATH via ~/.shell_env (sourced from ~/.zshenv),
+# placed *behind* mise's shims. Do not re-prepend it here — that would shadow
+# mise-managed tools with system versions.
 
-# Added by Antigravity CLI installer
-export PATH="/Users/dididi/.local/bin:$PATH"
+# Activate mise AFTER macOS path_helper (/etc/zprofile) and every other PATH
+# edit, so mise-managed tools take precedence in interactive login shells.
+# (.shell_env activates mise with --shims for non-interactive shells, but on
+# login path_helper reorders PATH afterwards and pushes system dirs to the front.)
+if command -v mise >/dev/null 2>&1; then
+  eval "$(mise activate zsh)"
+fi
 
 # zoxide — must be initialized at the very end of the config (replaces `cd`)
 if command -v zoxide >/dev/null 2>&1; then

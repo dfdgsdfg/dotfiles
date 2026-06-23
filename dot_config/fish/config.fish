@@ -2,26 +2,12 @@
 set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
 
-# Homebrew, mise
+# Homebrew (mise is activated near the end, after all PATH modifications)
 switch (sysctl -n machdep.cpu.brand_string)
     case '*Apple*'
         eval (/opt/homebrew/bin/brew shellenv)
-        if test "$VSCODE_RESOLVING_ENVIRONMENT" = 1
-            mise activate fish --shims | source
-        else if status is-interactive
-            mise activate fish | source
-        else
-            mise activate fish --shims | source
-        end
     case '*'
         eval (/usr/local/bin/brew shellenv)
-        if test "$VSCODE_RESOLVING_ENVIRONMENT" = 1
-            mise activate fish --shims | source
-        else if status is-interactive
-            mise activate fish | source
-        else
-            mise activate fish --shims | source
-        end
 end
 
 # https://rustup.rs/
@@ -133,6 +119,17 @@ source ~/.orbstack/shell/init2.fish 2>/dev/null || :
 
 # Added by Antigravity CLI installer
 set -gx PATH "/Users/dididi/.local/bin" $PATH
+
+# Activate mise LAST so its shims/tools take precedence over fish_user_paths and
+# every PATH entry set above. In interactive shells mise also installs a prompt
+# hook that keeps its paths in front.
+if test "$VSCODE_RESOLVING_ENVIRONMENT" = 1
+    mise activate fish --shims | source
+else if status is-interactive
+    mise activate fish | source
+else
+    mise activate fish --shims | source
+end
 
 # zoxide — must be initialized at the very end of the config (replaces `cd`)
 if status is-interactive
