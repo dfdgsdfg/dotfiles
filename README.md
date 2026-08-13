@@ -96,6 +96,10 @@ chezmoi init --prompt --apply
 chezmoi data
 ```
 
+Codex model routing, role definitions, and global orchestration guidance are
+managed under `dot_codex/`. The config modifier updates only the owned model,
+agent, and feature keys so Codex can continue writing its app-managed settings.
+
 
 ### `*nix` Config [mise](https://mise.jdx.dev/)
 
