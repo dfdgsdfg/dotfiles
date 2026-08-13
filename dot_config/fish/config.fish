@@ -34,6 +34,8 @@ set -Ua fish_user_paths ~/.antigravity/antigravity/bin
 # Lean theorem prover
 set -Ua fish_user_paths ~/.elan/bin
 set -Ua fish_user_paths ~/opt/tlpas/lib
+# llvm-mingw cross toolchain
+set -Ua fish_user_paths ~/opt/llvm-mingw/bin
 
 # ENV
 set -x LANG "ko_KR.UTF-8"
