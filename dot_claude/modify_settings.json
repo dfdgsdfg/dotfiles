@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+"""Enforce Claude Code routing policy keys without replacing app-managed settings.
+
+chezmoi passes the current ~/.claude/settings.json on stdin; we set only the two
+policy keys (main model + reasoning effort) and preserve everything else
+(Orca hooks, statusLine, plugins, theme, ...). New machines with no file start
+from an empty object.
+"""
+
+from __future__ import annotations
+
+import json
+import sys
+
+MANAGED = {
+    "model": "opus",
+    "effortLevel": "high",
+}
+
+
+def main() -> None:
+    raw = sys.stdin.read()
+    obj = json.loads(raw) if raw.strip() else {}
+    if not isinstance(obj, dict):
+        raise SystemExit("settings.json is not a JSON object; refusing to overwrite")
+    for key, value in MANAGED.items():
+        obj[key] = value
+    sys.stdout.write(json.dumps(obj, indent=2, ensure_ascii=False) + "\n")
+
+
+if __name__ == "__main__":
+    main()
