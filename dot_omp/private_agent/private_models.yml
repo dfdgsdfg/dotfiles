@@ -1,0 +1,38 @@
+providers: 
+  omniroute-deepseek: 
+    baseUrl: https://omni.tail484abe.ts.net/v1
+    api: openai-completions
+    authHeader: true
+    apiKey: "!security find-generic-password -a \"$USER\" -s \"omniroute-us-mbp-omp-deepseek\" -w"
+    models: 
+      - id: agent/cheap
+        name: DeepSeek cheap worker (non-thinking)
+        reasoning: false
+        input: 
+          - text
+        contextWindow: 1000000
+        maxTokens: 16384
+        samplingParams: 
+          thinking: 
+            type: disabled
+          reasoning_effort: none
+        compat: 
+          supportsReasoningEffort: true
+          thinkingFormat: openai
+          maxTokensField: max_tokens
+      - id: agent/bulk
+        name: DeepSeek bulk worker (High)
+        reasoning: true
+        input: 
+          - text
+        contextWindow: 1000000
+        maxTokens: 32768
+        samplingParams: 
+          thinking: 
+            type: enabled
+          reasoning_effort: high
+        compat: 
+          supportsReasoningEffort: true
+          thinkingFormat: openai
+          requiresReasoningContentOnAssistantMessages: true
+          maxTokensField: max_tokens
